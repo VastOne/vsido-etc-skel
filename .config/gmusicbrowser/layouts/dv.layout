@@ -1,0 +1,27 @@
+[dv]
+Type=G+
+
+#Menu bar
+MBmenu		= MainMenuItem LayoutItem PSortItem PFilterItem QueueItem
+HBmenu		= _MBmenu
+
+#Player buttons and TimeBar
+HBButtons	= Prev Stop Play Next ExtraButtons -VolumeIcon -Pref -OpenBrowser(toggle)
+HBTime		= Time _TimeSlider
+HBplaytime      = HBButtons 25_HBTime
+
+#Cover and Playlists
+HPplaylist      = _Cover SongTree(group=1)
+
+#Filter panes, SongList, Searchbar
+HPfp1		= FilterPane1(nb=2,hidebb=1,page=artist) FilterPane2(nb=3,hidebb=1,page=album)
+HPfp0	 	= FilterPane0(nb=1,hidebb=1,page=genre) HPfp1
+HPfpmain        = HPfp0 SongList
+HBsearch	= _SimpleSearch -FilterLock -PlayFilter -Refresh -ResetFilter
+VBbottom        = _HPfpmain HBsearch
+
+#Playlist and Filter pane panels
+VPmain          = HPplaylist VBbottom
+
+#All containers
+VBmain          = HBmenu HBplaytime _VPmain

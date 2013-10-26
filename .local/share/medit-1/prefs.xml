@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- -*- xml -*- -->
+<moo-prefs version="1.0">
+  <Prefs>
+    <item name="Editor/color_scheme" type="string">cobalt</item>
+    <item name="Editor/save_session" type="bool">FALSE</item>
+    <item name="Editor/wrapping_enable" type="bool">TRUE</item>
+  </Prefs>
+</moo-prefs>

@@ -1,0 +1,22 @@
+[laite alternative]
+Author = "laite"
+Type=G
+Name	= _"laite alt/"
+Default = Window(size=100%x100%)
+VolumeScroll	= HBControls
+VBfirst		= 5Filler5 _HPtop
+HPtop		= VBall NBrit
+VBall		= VBControls _NBleft
+VBControls	= HBStatus HBProgress HBControls
+HBStatus	= 4Filler1 _HBTitle(xalign=.5, yalign=1) -lastfmLoveButton(button=1) -Stars(yalign=0.5)
+HBTitle		= _Title_by(expand_max=300,ellipsize=end,markup="<b>%t</b> by <b>%a</b> in <i>%l</i> (%y)",tip=_"Title: %t (Track No. %n)",yalign=0.5)
+HBControls	= Prev Play Next 10Filler7 Vol(button=1) -SimpleSearch(nb=1,group=1) -Filter(button=1) -Sort(button=1) -Sunshine(button=1) \
+			-Button3(click1="RunPerlCode(::IdleScan)",size=menu,stock=gtk-zoom-in,tip=_"Scan now") -Pref(size=menu) -Queue(button=1)
+NBleft		= HistoryStats(group=1) VPfilters
+NBrit		= (tabpos=right270) SongTree1(headclick='select',group=1) SongTree2(group=8)
+VPfilters	= (tabtitle=_"Filters") _FPane1(nb=2,group=1) VPfilters2
+VPfilters2	= HPfilter1 _VPfilters3
+VPfilters3	= _FPane4(nb=5,group=1) HBfiltbottom
+HBfiltbottom	= Total(group=1,relief=none)
+HPfilter1	= FPane2(nb=3,group=1) FPane3(nb=4,group=1)
+HBProgress	= Time(markup=%s,initsize="-XX:XX") _Scale LabelTime(markup='%m ')

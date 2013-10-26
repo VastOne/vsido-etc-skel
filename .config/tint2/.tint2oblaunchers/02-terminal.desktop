@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Terminal
+Exec=launch xfce4-terminal
+Icon=WoBD Terminal.png
+Categories=GNOME;GTK;Utility;TerminalEmulator;
+StartupNotify=true

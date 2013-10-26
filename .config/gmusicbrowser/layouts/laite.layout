@@ -1,0 +1,97 @@
+{Column icolabel_laite}
+menutitle= _"Labels icons (laite)"
+title = _"Labels"
+sort = label:i
+width = 50
+ico : icon(pad=2,icon=$labelicons,w=$_w,xalign=1)
+
+{Column testtitleandprogress_laite}
+title= _"(Artist) - Title & progress"
+sort=album:i title:i
+width=200
+songbl=text
+hreq=text:h
+progress: pbar( fill=$progress, hide=!$playing,y=1,h=-2)
+text: text(markup=pesc(if($album_artist eq 'Various Artists',$artist.' - '.$title,$title)))
+
+{Column playcount_center_laite}
+title = _"PC"
+menutitle = _"playcount (center)"
+text: text(markup=playmarkup(pesc($playcount)),w=$_w,xalign=0.5)
+
+{Column playandlenth_laite}
+menutitle = Playing/Progress (laite)
+title = Length
+width = 20
+sort = title:i
+text:	text(w=$_w,xalign=1,markup=playmarkup(if($playing,pesc('-'.int((((60*formattime('%M',$length_,0))+formattime('%S',$length_,0))-($progress*((60*formattime('%M',$length_,0))+formattime('%S',$length_,0))))/60).':'.if((int((((60*formattime('%M',$length_,0))+formattime('%S',$length_,0))-($progress*((60*formattime('%M',$length_,0))+formattime('%S',$length_,0))))%60)) < 10,'0'.int((((60*formattime('%M',$length_,0))+formattime('%S',$length_,0))-($progress*((60*formattime('%M',$length_,0))+formattime('%S',$length_,0))))%60),int((((60*formattime('%M',$length_,0))+formattime('%S',$length_,0))-($progress*((60*formattime('%M',$length_,0))+formattime('%S',$length_,0))))%60))),pesc($length))))
+
+{Column titleandicon_laite}
+menutitle = _"(Artist -) Title & icon"
+title = _"Title & icon"
+sort = title:i
+width = 200
+songbl= text
+hreq = text:h
+text : text(pad=2,markup=playmarkup(pesc(if($album_artist eq 'Various Artists',$artist.' - '.$title,$title))),w=-icolabel:w)
+icolabel : icon(pad=2,x=text:w,icon=$labelicons)
+
+{Group cover_center_laite}
+title=laite_center
+head= pic:h + title:h +20
+vcollapse=head
+vmin=pic:h+title:h+20
+title:	text(y=pic:y+pic:h+20,markup='<b><big>'.pesc($album).'</big></b>'. if($year,'  <big><b>«</b></big>  '.pesc($year)) . '  <big><b>«</b></big>  '.pesc($artist),pad=2, x= $_w/2 - title:w/2)
+pic:	aapic(picsize=picsize,ypad=2, x= $_w/2 - pic:w/2)
+picsize : OptionNumber(default=220,min=20,max=1000,step=10)
+picstars : picture(file=ratingpic($rating_avrg),x=($_w/2)-(picstars:w/2),y=pic:y+pic:h)
+
+{Group cover_center2_laite}
+title=laite_center2
+head= pic:h + title:h +20
+vcollapse=head
+vmin=pic:h+title:h+20
+title:	text(y=pic:y+pic:h+20,markup='<b><big>'.pesc($album).'</big></b>'. if($year,'  <big><b>«</b></big>  '.pesc($year)) . '  <big><b>«</b></big>  '.pesc($artist),pad=2, x=if($_w>title:w,$_w/2-title:w/2,0))
+pic:	aapic(picsize=picsize,ypad=2, x= $_w/2 - pic:w/2)
+picsize : OptionNumber(default=220,min=20,max=1000,step=10)
+text2:	text(markup=pesc($nbsongs).' songs ('.pesc($length).')',y=pic:y+pic:h,x=($_w/2)-(picstars:w/2)-(text2:w/2)-3)
+picstars : picture(file=ratingpic($rating_avrg),x=(text2:x+text2:w+6),y=pic:y+pic:h)
+
+
+{Group artistalbum_breadcrumbs_laite1}
+title=album and artist breadcrumbs (laite1)
+head=title:h
+tail=25
+vcollapse=head
+vmin=pic:y+pic:h+50
+left=pic:w+2
+title:	text(markup='<b><big>'.pesc($album).'</big></b>'. if($year,'  <big><b>«</b></big>  '.pesc($year)) . '  <big><b>«</b></big>  '.pesc($artist),pad=2)
+pic:	+aapic(y=title:h+title:y,picsize=picsize,ypad=2,xpad=1,aa='album')
+picsize : OptionNumber(default=100,min=20,max=1000,step=10)
+picstars : picture(file=ratingpic($rating_avrg),x=(picsize/2)-(picstars:w/2),y=pic:y+pic:h,hide=$rating_avrg==50)
+text2:	text(markup=pesc($nbsongs).' songs ('.pesc($length).')',y=pic:y+pic:h+picstars:h,x=(picsize/2)-(text2:w/2))
+
+
+[O_laite_timebar]
+Type= O
+Name= _"laite and Time"
+HBmain	= TimeBar(minwidth=500,text="%a - %t")
+Window = insensitive=1
+
+[D_buttons_progress]
+Type= D
+Name = _"Laite and Buttons"
+Window =  transparent=1
+VBmain	= TimeBar(minwidth=500,text="%a - %t")
+
+[D_buttons_progress3]
+Type= D
+Name = _"Laite and Buttons3"
+Window =  transparent=1
+HBmain	= Prev TimeBar(minwidth=500,minheight=40,ypad=0,text="%a - %t") Next
+
+[same_genre]
+Type= P
+Name=Same genre
+VBmain = _SongTree(group=Play:genre)
+

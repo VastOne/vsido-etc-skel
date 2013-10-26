@@ -1,0 +1,84 @@
+# This is an automatically generated file.
+# Please see <file:/usr/share/doc/menu/README> for information.
+# to use your own menu, copy this to ~/.fluxbox/menu, then edit
+# ~/.fluxbox/init and change the session.menuFile path to ~/.fluxbox/menu
+[begin] (VSIDO Fluxbox)
+    [separator] (--------)
+    [exec] (Run Program) {xfce4-appfinder --collapsed} </usr/share/icons/LinuxLex-8/apps/gnome-run.png>
+    [exec] (Terminal) {launch xfce4-terminal} </usr/share/icons/LinuxLex-8/apps/xfce-terminal.png>
+    [exec] (Iceweasel) {launch iceweasel} </usr/share/icons/LinuxLex-8/apps/firefox.png>
+    [exec] (SpaceFM) {launch spacefm} </usr/share/icons/LinuxLex-8/apps/file-manager.png>
+# Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
+    [separator] (--------)
+    [submenu] (Settings) </usr/share/icons/LinuxLex-8/apps/vsidoorb.png>
+        [exec] (Accessibility) {launch xmag} </usr/share/icons/LinuxLex-8/apps/access.png>
+        [exec] (BootUp Manager) {su-to-root -X -c bum} </usr/share/icons/LinuxLex-8/apps/bum.png>
+        [exec] (Disk Manager) {su-to-root -X -c disk-manager} </usr/share/icons/LinuxLex-8/apps/disk-manager.png>
+        [exec] (Gparted) {su-to-root -X -c gparted} </usr/share/icons/LinuxLex-8/apps/gparted.png>
+        [exec] (Notifications) {xfce4-notifyd-config} </usr/share/icons/LinuxLex-8/apps/notify.png>
+        [exec] (Task Manager) {xfce4-taskmanager} </usr/share/icons/LinuxLex-8/apps/utilities-system-monitor.png>
+    [end]
+    [separator] (--------)
+    [submenu] (Accessories) </usr/share/icons/LinuxLex-8/apps/accessories.png>
+        [exec] (Application Finder) {xfce4-appfinder} </usr/share/icons/LinuxLex-8/apps/gnome-run.png>
+        [exec] (Medit) {launch medit} </usr/share/icons/LinuxLex-8/apps/medit.png>
+        [exec] (LXAppearance) {/usr/bin/lxappearance} </usr/share/icons/LinuxLex-8/apps/preferences-desktop-theme.png>
+        [exec] (nitrogen) {/usr/bin/nitrogen} </usr/share/icons/LinuxLex-8/apps/nitrogen.png>
+        [exec] (SpaceFM) {launch spacefm} </usr/share/icons/LinuxLex-8/apps/file-manager.png>
+        [exec] (SpaceFM File Search) {spacefm --find-files %F} </usr/share/icons/LinuxLex-8/apps/file-manager.png>
+        [exec] (Terminal) {launch xfce4-terminal} </usr/share/icons/LinuxLex-8/apps/xfce-terminal.png>
+        [exec] (Xarchiver) {xarchiver} </usr/share/icons/hicolor/48x48/apps/xarchiver.png>
+        [exec] (Htop) {xfce4-terminal -x htop} </usr/share/icons/LinuxLex-8/apps/htop.png>
+    [end]
+    [submenu] (Development) </usr/share/icons/LinuxLex-8/apps/dev.png>
+        [exec] (D-feet) {launch d-feet} </usr/share/icons/LinuxLex-8/apps/d-feet.png>
+        [exec] (Geany) {launch geany} </usr/share/icons/LinuxLex-8/apps/geany.png>
+        [exec] (Xcalc) {xcalc} </usr/share/icons/LinuxLex-8/apps/gnome-calculator.png>
+    [end]
+    [submenu] (Fluxbox) {Settings} </usr/share/icons/LinuxLex-8/apps/fluxbox.png>
+        [config] (Fluxbox Menu) </usr/share/icons/LinuxLex-8/apps/fluxbox.png>
+        [reconfig] (Reload Config) </usr/share/icons/LinuxLex-8/apps/fluxbox.png>
+        [restart] (Restart Fluxbox) </usr/share/icons/LinuxLex-8/apps/fluxbox.png>
+        [exec] (Fluxbox Menu Editor) {cd ~/fluxmenu && python fluxMenu.py} </usr/share/icons/LinuxLex-8/apps/fluxbox.png>
+        [workspaces] (Workspaces) </usr/share/icons/LinuxLex-8/apps/fluxbox.png>
+        [submenu] (Styles) </usr/share/icons/LinuxLex-8/apps/fluxbox.png>
+            [stylesdir] (/usr/share/fluxbox/styles)
+            [stylesdir] (~/.fluxbox/styles)
+        [end]
+    [end]
+    [submenu] (Graphics) </usr/share/icons/LinuxLex-8/apps/graphics.png>
+        [exec] (Mirage) {launch mirage} </usr/share/icons/LinuxLex-8/apps/mirage.png>
+        [exec] (Screenshot) {xfce4-screenshooter} </usr/share/icons/LinuxLex-8/apps/screenshooter.png>
+    [end]
+    [submenu] (Internet) </usr/share/icons/LinuxLex-8/apps/web.png>
+        [exec] (Ceni Settings) {xfce4-terminal -x ceni} </usr/share/icons/LinuxLex-8/apps/ceni.png>
+        [exec] (FileZilla) {/usr/bin/filezilla} </usr/share/icons/LinuxLex-8/apps/filezilla.png>
+        [exec] (Iceweasel) {launch iceweasel} </usr/share/icons/LinuxLex-8/apps/firefox.png>
+        [exec] (Transmission) {launch transmission-gtk} </usr/share/icons/LinuxLex-8/apps/transmission.png>
+        [exec] (XChat IRC) {/usr/bin/xchat} </usr/share/icons/LinuxLex-8/apps/xchat_01.png>
+        [exec] (WICD Network Manager) {wicd-gtk --no-tray} </usr/share/pixmaps/wicd-gtk.xpm>
+    [end]
+    [submenu] (Multimedia) </usr/share/icons/LinuxLex-8/apps/multimedia.png>
+        [exec] (Audacity) {launch audacity} </usr/share/icons/LinuxLex-8/apps/audacity.png>
+        [exec] (GMusicBrowser) {launch ~/gmusicbrowser/gmusicbrowser.pl} </usr/share/icons/LinuxLex-8/apps/gmb.png>
+        [exec] (Pithos - Pandora Front End) {launch pithos} </usr/share/icons/LinuxLex-8/apps/pithos.png>
+        [exec] (PulseAudio Volume Controls) {pavucontrol} </usr/share/icons/LinuxLex-8/apps/multimedia-volume-control.png>
+        [exec] (UMPlayer) {launch umplayer} </usr/share/icons/LinuxLex-8/apps/umplayer.png>
+        [exec] (Xfburn) {launch xfburn} </usr/share/icons/LinuxLex-8/apps/media-cdrom.png>
+    [end]
+    [submenu] (System) </usr/share/icons/LinuxLex-8/apps/system.png>
+        [exec] (bleachbit) {/usr/bin/bleachbit} </usr/share/icons/LinuxLex-8/apps/bleachbit.png>
+        [exec] (bleachbit - root) {su-to-root -X -c bleachbit} </usr/share/icons/LinuxLex-8/apps/bleachbit-root.png>
+        [exec] (Gdebi Package Installer) {su-to-root -X -c gdebi-gtk} </usr/share/icons/LinuxLex-8/apps/gdebi.png>
+        [exec] (Install VSIDO) {remsu /usr/bin/remastersys-installer gui} </usr/share/icons/LinuxLex-8/apps/vsidoorb.png>
+        [exec] (Disk Manager) {su-to-root -X -c /usr/sbin/disk-manager} </usr/share/icons/LinuxLex-8/apps/disk-manager.png>
+        [exec] (Gparted) {su-to-root -X -c /usr/sbin/gparted} </usr/share/icons/LinuxLex-8/apps/gparted.png>
+        [exec] (Root Terminal) {launch su-to-root -X -c xfce4-terminal} </usr/share/icons/LinuxLex-8/apps/terminal.png>
+        [exec] (Root SpaceFM) {launch su-to-root -X -c spacefm} </usr/share/pixmaps/vsidosfmroot.png>
+        [exec] (System Information) {/usr/bin/hardinfo} </usr/share/hardinfo/pixmaps/logo.png>
+        [exec] (Aptitude Package Manager) { x-terminal-emulator -T "Aptitude Package Manager (text)" -e /usr/bin/aptitude-curses} </usr/share/icons/LinuxLex-8/apps/apt-get.png>
+        [exec] (Synaptic Package Manager) {su-to-root -X -c synaptic} </usr/share/icons/LinuxLex-8/apps/apt-get.png>
+    [end]
+    [separator] (--------)
+    [exec] (Exit) {/usr/bin/vsido-exit} </usr/share/icons/LinuxLex-8/apps/shutdown.png>
+[end]

@@ -1,0 +1,162 @@
+#---------------------------------------------
+# TINT2 CONFIG FILE
+#---------------------------------------------
+
+#---------------------------------------------
+# BACKGROUND AND BORDER
+#---------------------------------------------
+
+# Background definitions
+# ID 1 for Panel
+rounded = 0
+border_width = 0
+background_color = #ffffff 0
+#border_color = #000000 70
+
+# ID 2
+rounded = 1
+border_width = 1
+background_color = #ffffff 0
+#border_color = #D8D8D8 29
+
+# ID 3
+rounded = 1
+border_width = 1
+background_color = #ffffff 0
+#border_color = #121212 89
+
+# ID 4
+rounded = 1
+border_width = 1
+background_color = #ffffff 0
+#border_color = #ED2323 60
+
+# ID 5
+rounded = 0
+border_width = 1
+background_color = #ffffff 0
+#border_color = #000000 0
+
+# ID 6
+rounded = 6
+border_width = 0
+background_color = #ffffff 0
+#border_color = #D8D8D8 0
+
+# ID 7
+rounded = 3
+border_width = 0
+background_color = #ffffff 0
+#border_color = #222222 89
+
+# ID 8
+rounded = 1
+border_width = 1
+background_color = #ffffff 0
+#border_color = #888888 200
+
+# ID 9
+rounded = 6
+border_width = 0
+background_color = #ffffff 0
+#border_color = #888888 20
+
+# ID 10
+rounded = 0
+border_width = 0
+background_color = #ffffff 0
+#border_color = #888888 20
+
+
+#---------------------------------------------
+# PANEL
+#---------------------------------------------
+# wm_menu = 1
+panel_items = LT
+panel_monitor = all
+panel_position = bottom right horizontal  
+panel_size = 70% 42
+panel_margin = 0 0
+panel_padding = 0 0
+font_shadow = 0
+panel_background_id = 0
+panel_layer = bottom
+
+#---------------------------------------------
+# TASKBAR
+#---------------------------------------------
+taskbar_mode = single_desktop
+taskbar_padding = 25 0 4
+taskbar_background_id = 1
+
+#---------------------------------------------
+# TASKS
+#---------------------------------------------
+task_icon = 1
+task_text = 0
+# task_width = 60
+task_maximum_size = 42 
+task_centered = 1
+task_padding = 2 2
+task_font = sans 7
+task_font_color = #ffffff 70
+task_active_font_color = #ffffff 85
+task_background_id = 3
+task_active_background_id = 2
+
+#---------------------------------------------
+# SYSTRAYBAR
+#---------------------------------------------
+systray = 1
+systray_padding = 8 2 3
+systray_sort = ascending
+systray_background_id = 0
+systray_icon_size = 38
+
+#---------------------------------------------
+# CLOCK
+#---------------------------------------------
+#time1_format = %I:%M:%P
+#time1_font = LaudatioC 15
+#time2_format = %a %b %d %Y
+#time2_font = LaudatioC 15
+#clock_font_color = #ffffff 76
+#clock_padding = 4 4
+#clock_background_id = 1
+
+#---------------------------------------------
+# BATTERY
+#---------------------------------------------
+#battery = 0
+#battery_low_status = 7
+#battery_low_cmd = notify-send "battery low"
+#bat1_font = sans 8
+#bat2_font = sans 6
+#battery_font_color = #ffffff 76
+#battery_padding = 1 0
+#battery_background_id = 0
+
+# Launchers
+launcher_icon_theme = LinuxLex-8
+launcher_padding = 64 0 5
+launcher_background_id = 9
+launcher_icon_size = 55
+# launcher_item_app = /usr/share/applications/xfce4-session-logout.desktop
+launcher_apps_dir = /usr/local/bin/.tint2launchers/
+
+
+#---------------------------------------------
+# MOUSE ACTION ON TASK
+#---------------------------------------------
+mouse_middle = none
+mouse_right = none
+mouse_scroll_up = toggle
+mouse_scroll_down = iconify
+
+
+# Panel Autohide
+autohide = 1
+autohide_show_timeout = 0.0
+autohide_hide_timeout = 0.0
+autohide_height = 30
+strut_policy = none

@@ -1,0 +1,138 @@
+[Truc]
+Author=aboettger & Mgrubert
+Type=G+
+
+Default = Window(size=90%x80%) \
+HBArtist(size=100) \
+HBAlbum(size=100) \
+HPPanneaux(size=200)
+
+VolumeScroll = VBVolume
+
+# Filler for horizontal padding
+VBMainContainer = 3Filler1 _HBMain 3Filler2 
+
+# Filler for vertical padding
+HBMain = 3Filler3 _HPMainPannel 3Filler4
+
+ HPMainPannel = _VBGauche _HPCentreEtDroite
+ 
+ HPCentreEtDroite = _VPMainCentre _VPDroite
+
+
+ 	
+
+############################
+# Gauche
+############################
+
+VBGauche =  HBSearchBar _FilterPane4(nb=0,hidebb=1,tabpos=left90,page=savedtree,pages=savedtree) 
+
+				HBSearchBar = (minheight=34,maxheight=34)  ResetFilter2 2_SimpleSearch(noselector=1,suggest=0)   
+
+                      			
+
+
+############################
+# Milieu
+############################
+
+VPMainCentre = _HPPanneaux _VBSongtree
+
+
+	HPPanneaux = _HBArtist _HBAlbum
+
+		HBArtist = _FilterPane0(nb=3, hidebb=1,pages=artist,page=artist,page_artist/lmarkup=1)
+		HBAlbum = _FilterPane1(nb=5,hidebb=1,pages=album,page=album,page_album/mode=mosaic,page_album/lpicsize=64,page_album/lmarkup=1,page_album/mmarkup=below)    
+
+	VBSongtree =  _SongTree 3Filler9 HBTotal
+				    
+		HBTotal = -Total(size=small)
+
+
+
+############################
+# Droite
+############################
+
+VPDroite =  HPNowplaying _VBListsETBoutons 
+
+	HPNowplaying = HBCover _HBSongInfoEtControlsEtTimebarEtVolume
+                
+                	HBCover = Cover(default=elementary/no-cover.svg,showcover=0,minsize=200,maxsize=400)
+
+			HBSongInfoEtControlsEtTimebarEtVolume = _VBSongInfoEtControlsEtTimebar VBVolume
+
+			VBVolume = VolumeIcon(button=1) _VolumeSlider(1,0)
+
+			VBSongInfoEtControlsEtTimebar = -HBControls _VBSongInfoEtTimebar 
+
+				VBSongInfoEtTimebar = _Filler22 VBSongInfo _Filler23 -HBTimeBar 
+
+					VBSongInfo =  \
+					    _HBInfoTitre \
+					    _HBInfoArtist \
+					    _HBInfoalbum 
+
+						HBInfoTitre = 2Filler38 _Title(minsize=0,markup="<big><big><big><big><b>%t</b></big></big></big></big>",click1="",yalign=0.5) 
+						HBInfoArtist = 2Filler40 _Artist(yalign=1,minsize=0,markup="<big><big> %a</big></big>",click1="")
+						HBInfoalbum = 2Filler39 _Album(minsize=1,expand_max=200,yalign=1,markup=" %l",click1="") -2Filler56 -Date 
+
+					HBTimeBar = 2Filler37 _TimeBar 2Filler25
+
+				HBControls = \
+					_Filler58 \
+					Prev(size=large-toolbar,tip=_"Previous Song") \
+					Play(size=large-toolbar,tip=_"Play/Pause") \
+					Stop(size=large-toolbar,tip=_"Stop") \
+					Next(size=large-toolbar,tip=_"Next Song") \
+					_Filler59
+                			
+
+						
+
+		
+	VBListsETBoutons = _NBSidebar1 HBBouton
+
+	NBSidebar1 = (tabpos=right90,typesubmenu='PC') \
+                        VBQueueList \
+                        VBPlayList
+
+		VBQueueList = (tabtitle=_"Queue") \
+                            EditListButtons(group=2,small=1,relief=none) \
+			    #MBQueueList = LSortItem(label="Sort",group=2) \ 
+                            _QueueList(cols="queuenumber titleaa",colwidth="queuenumber 20",sort="path album:i disc track file",songtree=0,group=2) \
+			    HBQueueActions
+
+                                HBQueueActions = -QueueActions #MBQueue  
+
+		    		#MBQueue = QueueItem
+			
+
+                VBPlayList = (tabtitle=_"Playlist") \
+                            _SongList(cols="playandqueue titleaa",colwidth="queuenumber 20",sort="path album:i disc track file",mode=playlist,group=1,follow=1)
+
+############################
+# Boutons
+############################	
+
+HBBouton = \
+		Fullscreen(size=button,minwidth=34,maxwidth=34) \
+		Playlist(size=button,minwidth=34,maxwidth=34) \
+		ResetFilter \		
+		HSeparator3 \
+		Sort(size=button,minwidth=34,maxwidth=34) \
+		10Filter(size=button,minwidth=34,maxwidth=34)  \
+		Queue(size=button,minwidth=34,maxwidth=34)  \
+		
+                -Quit(size=button,minwidth=34,maxwidth=34,tip=_"Quit") \
+		-Pref(stock=gtk-preferences,size=button,minwidth=34,maxwidth=34) \
+               	-HSeparator4 \
+		-MBLayouts \
+		-HSeparator5 \
+                -Button1(click1="RunPerlCode(::ChooseAddPath(0,1))",stock=gtk-add,size=button,minwidth=34,maxwidth=34,tip=_"Add folder ...") \
+		-Button2(click1="RunPerlCode(::IdleCheck)",stock=gtk-refresh,size=button,minwidth=34,maxwidth=34,tip=_"check now") \
+		-Button3(click1="RunPerlCode(::IdleScan)",stock=gtk-zoom-in,size=button,minwidth=34,maxwidth=34,tip=_"scan now")		
+
+			MBLayouts = (minwidth=34,maxwidth=34) \	
+			     LayoutItem 

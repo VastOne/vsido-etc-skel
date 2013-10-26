@@ -1,0 +1,10 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+
+
+
+/* Change the url auto-complete text color */
+.autocomplete-tree {
+color: #d7d7d7 !important;
+background-color: #191919 !important; }
+

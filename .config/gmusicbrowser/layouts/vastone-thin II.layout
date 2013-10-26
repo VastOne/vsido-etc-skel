@@ -1,0 +1,15 @@
+[VastOne Thin Layout II]
+Type=D
+Author=VastOne
+
+Window =  transparent=1
+HBTime		= Length(markup="$length",initsize="XX:XX",xalign=0) _TimeSlider(direct_mode=1) -PlayingTime(markup="%s",initsize="XX:XX",xalign=1)
+HBButtons	= 7Prev 58Play -Next
+HBIndic		= 7Pref(size='large_toolbar') 28Filler2 VolumeIcon(size='large_toolbar') -Quit(size='large_toolbar') 
+HBTitle		= LockSong _Title LabelsIcons
+HBArtist	= LockArtist _Artist 
+HBAlbum		= LockAlbum _Album 
+VBText		= HBTitle HBArtist HBAlbum
+VBmain		= _VBText -HBIndic -HBTime HBButtons
+HBmain		= _VBmain Filler1 
+VolumeScroll	= VolumeIcon

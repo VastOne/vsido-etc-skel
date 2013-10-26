@@ -1,0 +1,91 @@
+[NoisyBox 1.2]
+
+Type 	= G+
+Title	= NoisyBox 1.2
+Author  = peedanee
+Category= _"NoisyBox"
+
+DefaultFocus= SimpleSearch
+KeyBindings = c-l SetFocusOn(SimpleSearch)
+Window      = hidden=SongTree|FPane2|VBInfo|Cover
+
+
+## Layout ##
+
+VBMainWindow= HBTopBar 3Filler1 _HPMain
+
+
+## Top Bar ##
+
+HBTopBar	= 3Filler2 Prev Play Next 5Filler3 HBToggleView 2Filler4 _VBControl SimpleSearch \
+    3Filler5 -2Filler6 -BMMenu
+
+HBToggleView= TogButton1(size=large-toolbar,togglegroup=1,icon=nx-view-mosaic,widget=FPane2) \
+    TogButton2(size=large-toolbar,togglegroup=1,icon=nx-view-tree,widget=SongTree) \
+    TogButton3(size=large-toolbar,togglegroup=1,icon=nx-view-list,widget=VPSongList|Cover)
+
+VBControl	= (minwidth=450) _Title_by(xalign=0.5) HBTimeSlider
+
+HBTimeSlider= LabelTime 5_Scale -Length(markup="%m")
+
+
+## Menu ##
+
+BMMenu  	= (icon=gtk-preferences,size=large-toolbar) \
+    MenuItem1(command="RunPerlCode(::ChooseAddPath(1,1))",label=_"Import Folders",tip=_"Multiple \
+        folders only") \
+    MenuItem7(command="RunPerlCode(::IdleCheck)",label=_"Check Library") \
+    MenuItem2(command="RunPerlCode(::IdleScan)",label=_"Rescan Library") \
+    #MenuItem3(command=OpenCustom(Equalizer),label=_"Show Equalizer") \
+    LayoutItem SeparatorMenuItem1 \
+    MenuItem4(command=OpenPref,label=_"Preferences") SeparatorMenuItem2 \
+    MenuItem5(command="RunPerlCode(::AboutDialog)",label=_"About",tip=_"NoisyBox 1.2 layout \
+        by peedanee")         
+
+
+## Main ##
+
+HPMain      = VBLeft _VBRight
+VBLeft      = _NBList Cover(default=elementary/no-cover.svg) HBStatusBar1
+
+NBList      = FPane10(tabicon="",hidebb=1,pages=folder,tabtitle=_"Library ") \
+    FPane1(tabicon="",nb=1,hidebb=1,pages=savedtree,tabtitle=_"Filters ") \
+    QueueList(tabicon="",songtree=1,tabtitle=_"Queue (%n)",cols="queuenumber titleaa")
+
+VBRight     = _HBLibrary Progress HBStatusBar2
+
+HBLibrary   = _FPane2(nb=2,hidebb=1,pages=album,page_album/mode=mosaic,page_album/mmarkup=1,\
+        page_album/mpicsize=190) \
+    _SongTree \
+    _VPSongList \
+    -VBInfo
+
+VPSongList  = HBFilter _SongList(cols="playandqueue track title length file",sort="artist file")
+
+HBFilter	= _FPane3(nb=3,hidebb=1,pages=genre) \
+    _FPane4(nb=4,hidebb=1,pages=artists) \
+    _FPane5(nb=5,hidebb=1,pages=album)
+
+VBInfo      = _PluginArtistinfo
+
+
+## Status Bar ##
+
+HBStatusBar1= Sort(button=1,tip=_"Right click to toggle shuffle") 
+
+HBStatusBar2= 2Filler10 Total(button=0,mode=filter) ResetFilter(tip=_"Clear all filter") -2Filler7 \
+    -TogButton4(relief=none,icon=nx-pane-show,widget=VBInfo,tip=_"Show artist info") \
+    -MBEqualizer
+
+MBEqualizer = MenuItem6(command=OpenCustom(Equalizer),label=_"eQ",tip=_"Click twice to show \
+        equalizer")
+              
+
+## Size ##
+
+HSize1	    = 230 VBInfo
+HSize2	    = 150 SimpleSearch
+HSize5      = 188 VBLeft
+VSize2      = 30 SimpleSearch 
+VSize3      = 400 HPMain
+VSize4      = 150 HBFilter

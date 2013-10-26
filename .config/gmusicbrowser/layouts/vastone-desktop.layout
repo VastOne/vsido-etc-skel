@@ -1,0 +1,14 @@
+[vastone-desktop II]
+Type= D
+Window = transparent=1
+DefaultFontColor= white
+VBmain= HBtitle HBartist HBalbum Cover(minsize=300,maxsize=300,xalign=.5) TimeBar -HBButtons -HBTime
+ HBalbum= Album(markup="$album")
+ HBartist= Artist(markup="$artist")
+ HBtitle= Title(markup="$title_or_file")
+ HBButtons	=  Prev Play Next 1Filler1 -HBSettings -VolumeIcon
+ HBSettings	= ExtraButtons(size=menu) BMSettings
+ BMSettings	= (icon=gtk-preferences,size=menu) MainMenuItem PSortItem SMLibrary LayoutItem QueueItem PFilterItem SeparatorMenuItem01 MenuItem14(command=OpenPref,label=_"Settings",icon="gtk-preferences") MenuItem05(command=Quit,label=_"Quit",icon="gtk-quit")
+SMLibrary	= (label=_"Library") MenuItem00(command="RunPerlCode(::ChooseAddPath(0,1))",label=_"Add Music",icon="gtk-add") MenuItem32(command="RunPerlCode(::IdleScan)",label=_"Rescan Collection",icon="gtk-refresh")
+ HBTime		= Length(markup="$length",initsize="XX:XX",xalign=0) -PlayingTime(markup="%s",initsize="XX:XX",xalign=1)
+VolumeScroll	= HBButtons

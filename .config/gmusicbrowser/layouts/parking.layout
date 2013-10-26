@@ -1,0 +1,195 @@
+[Parking]
+Type=G+
+Title		= "gmusicbrowser" 
+Category 	= "Garage"
+DefaultFocus	= SimpleSearch1
+VolumeScroll 	= HBVolume VBVolume
+Default		= Window(size=1370x750)
+Window		= hidden=VBCover|VBQueue|HBSearchbis|HBSongPlaylist|VPQueueAndContext|HBBoutons|HBMosaic|VBBoutons|VBSideBar|HBButtonLess|VBButtonLess|VBSearch2
+Author		= Major Grubert (Shimmer adaptation and Shimmer is simon@shimmerproject.org)
+
+### main window containers : Mainright / Sidebar ###
+HBMainMain	= _VBMain VSeparator VBSideBar
+
+### main right = topbar / main #####
+  VBMain = VBTop HSeparator _HBMain
+
+### top bar from left to right ###
+    VBTop	= HBTop
+      HBTop	= HBButtons _15VBPlayer  -HBSettings
+        HBButtons = Prev Play Stop Next(click2=NextAlbum) VSeparator1
+        VBPlayer = 1Filler0 HBTitle HBTimeSlider
+          HBTitle = \
+		Title(expand_max=300,minsize=0,markup="<big><b>%t</b></big> ",click1="",tip=_"Title: %t (Track No. %n)",yalign=0.5) \
+		LockAlbum(stock="on:gmb-lock gmb-lockopen off:gmb-breadcrumb gmb-locklight") \
+		Album(tip=_"Album: %l (%Y)",minsize=1,expand_max=200,yalign=0.5,minsize=1,markup="<big> </big>%l ",showcover=0) \
+		LockArtist(stock="on:gmb-lock gmb-lockopen off:gmb-breadcrumb gmb-locklight") \
+		Artist(tip=_"Artist: %a",expand_max=200,yalign=0.5,minsize=0,markup="<big> </big>%a") \
+		-Stars(yalign=0.5)
+         HBTimeSlider = \
+		PlayingTime(markup="%s",initsize="XX:XX",xalign=0) \
+		_TimeSlider(direct_mode=1) \
+		-Length(markup="$length",initsize="XX:XX",xalign=1)
+        HBSettings = \
+		VSeparator2 \
+		HBButtonMore \
+		HBBoutons \
+		HBButtonLess \
+		ExtraButtons(size=large-toolbar) \
+		BMSettings \
+		HBVolume \
+		Quit1(icon=gmb-turnoff,size=large-toolbar,minwidth=34,maxwidth=34,tip=_"Quit")
+	  HBButtonMore 	= ToggleButton1(togglegroup=4,relief=none,size=menu,icon=gtk-add,widget=VPQueueAndContext|HBBoutons|HBButtonLess|VBBoutons|VBButtonLess,tip=_"Context or Queue")
+	  HBBoutons = (togglegroup=4) \
+		ToggleButton26(icon=gmb-queue,togglegroup=41,relief=none,size=menu,widget=VBQueue,tip=_"Queue") \
+		ToggleButton27(icon=gtk-about,togglegroup=41,relief=none,size=menu,widget=Context,tip=_"Context") \
+		ToggleButton28(icon=gmb-invert,togglegroup=41,relief=none,size=menu,widget=Context|VBQueue,tip=_"Context & Queue")	 	
+	  HBButtonLess = ToggleButton29(icon=gtk-remove,relief=none,size=menu,widget=HBButtonMore|VBButtonMore,togglegroup=4,tip=_"Less") VSeparator3
+	  BMSettings = (icon=gtk-preferences,size="large-toolbar") \
+		MenuItem01(togglewidget=HBButtons|HBSettings,togglegroup=5,label=_"Classic") \
+		MenuItem02(togglewidget=VBSideBar,togglegroup=5,label=_"With sidebar") \
+		SeparatorMenuItem01 \
+		SMLibrary \
+		SMView \
+		PlayItem \
+		SeparatorMenuItem02 \
+		MenuItem03(click1=OpenCustom(Equalizer),label=_"Equalizer",icon=gmb-equalizer) \
+		SeparatorMenuItem03 \
+		MenuItem04(command=OpenPref,label=_"Settings",icon="gtk-preferences") \
+		MenuItem05(command=Quit,label=_"Quit",icon="gtk-quit")
+	    SMLibrary = (label=_"Library") \
+		MenuItem10(command="RunPerlCode(::ChooseAddPath(0,1))",label=_"Add Music",icon="gtk-add") \
+		MenuItem11(command="RunPerlCode(::IdleScan)",label=_"Scan Collection",icon="gtk-refresh") \
+		MenuItem12(command="RunPerlCode(::IdleCheck)",label=_"Check Collection",icon="gtk-zoom-in")
+	    SMView = (label=_"View") \
+		LayoutItem \
+		SeparatorMenuItem20 \
+		MenuItem20(togglewidget=VBLeft,label=_"Library") \
+		MenuItem21(togglewidget=VBArtist,label=_"Artist") \
+		MenuItem22(togglewidget=VPMosaic,label=_"Albums") \
+		MenuItem23(togglewidget=VBCover,label=_"Cover") \
+		MenuItem24(togglewidget=VPQueueAndContext|HBBoutons,label=_"Context & Queue") \
+		SeparatorMenuItem21 \
+		MenuItem25(togglewidget=ABSearchBox,togglegroup=6,label=_"Search 1") \
+		MenuItem26(togglewidget=HBSearchbis,togglegroup=6,label=_"Search 2") 
+	  HBVolume = (yalign=0,yscale=0.0) VolumeIcon(button=1,click2=mute,tip=_"Left-click or scrollwheel to change, right-click to mute")
+
+### main : Filter1, Artist, Songlist, Queue, Context ###
+    HBMain = VBLeft VBArtist _VBSongStatus VPQueueAndContext
+
+### Filter1 : searchbox 1, filter1, cover
+      VBLeft = ABSearchBox _VPFilterCover HBStatus
+        ABSearchBox = (yalign=0) SimpleSearch1(suggest=1)
+        VPFilterCover = _VBFilter VBCover
+          VBFilter = _FilterPane0(nb=2,hidebb=1,hidetabs=0,tabpos="bottom",\
+		pages=filter|list|folder|genre|artists,\
+		page=filter,\
+		page_artists/lmarkup=1,page_artists/lmarkup="<b>%a</b> <small>%x %Y</small>",\
+		page_genre/mode=cloud,page_genre/cloud_max=35,page_genre/cloud_min=10)
+          VBCover = _Filler1 HBCover _Filler2
+            HBCover = _Filler3 Cover(overlay=6x6:350x350:elementary/overlay.png,default=elementary/no-cover.svg,showcover=0) _Filler4
+        HBStatus	= \
+		ToggleButton2(icon=gmb-picture,relief=none,size=menu,widget=VBCover,tip=_"Show/Hide Cover") \
+		-3Total(format=short,relief=none,button=1,mode=library,size="small")
+### Artist
+      VBArtist = _FilterPane1(nb=3,hidebb=1,hidetabs=0,\
+		pages=artists|album|year|added|genre,\
+		page=artists,\
+		page_artists/lmarkup=1,\
+		page_artists/lmarkup="<b>%a</b> <small> %s %Y</small>",\
+		page_added/depth=1,\
+		page_added/type="added.year|added.month",\
+		page_album/lmarkup="<b>%a</b>%Y<br><small>%s <small>%l</small></small>",\
+		page_album/lpicsize='-1',\
+		page_genre/cloud_max=35,\
+		page_genre/cloud_min=10,\
+		page_genre/mode=cloud,\
+      		page_year/cloud_max=40,\
+		page_year/cloud_min=12,\
+		page_year/mode=cloud)
+### Songlist
+      VBSongStatus = HBSearchbis _VBMosaicSongList HBTotal
+	HBSearchbis	= _SimpleSearch2(suggest=1)
+	VBMosaicSongList = VPMosaic _HBSongListtree
+	  VPMosaic = _FilterPane3(nb=4,hidebb=1,pages=album,page_album/mode=mosaic,page_album/mmarkup=1,page_album/mpicsize=96,hidetabs=1) 
+	  HBSongListtree	=  \
+		_SongTree(cols="playandqueueandtrack title length playcount genre ratingpic",colwidth="artist 124 lastplay 107 length 49 playandqueue 19 playandqueueandtrack 20 playcount 22 ratingpic 100 title 344 titleaa 397 track 21",grouping="album|artistalbum_breadcrumbs(picsize=100)|disc|discleft(width=15)",follow=1,sort="year album disc track") \
+		_HBSongPlaylist \
+		_HBMosaic
+	    HBMosaic = _FilterPane2(nb=4,hidebb=1,pages=album,page_album/mode=mosaic,page_album/mmarkup=1,page_album/mpicsize=72,hidetabs=1)
+	    HBSongPlaylist = _SongList(cols="playandqueueandtrack title artist album year length playcount",sort=artist,colwidth="album 200 artist 200 file 400 lastplay 100 length 41 path 413 playandqueueandtrack 24 playcount 96 rating 80 title 270 track 21 year 31",follow=1,sort="year album disc track")
+	HBTotal =  _HBToggle HBStatutSongList
+	  HBToggle = \
+		ToggleButton31(relief=none,size=menu,icon=gmb-album,widget=VPMosaic,tip=_"Albums") \
+		VSeparator31 \
+		ToggleButton32(relief=none,size=menu,icon=list,widget=HBSongPlaylist,togglegroup=7,tip=_"Simple List View") \
+		ToggleButton33(relief=none,size=menu,icon=tree,widget=SongTree,togglegroup=7,tip=_"Songtree View") \
+		ToggleButton34(relief=none,size=menu,icon=mosaic,widget=HBMosaic,togglegroup=7,tip=_"Mosaic View") \
+		VSeparator32 \
+		Sort(button=1,size=menu,tip=_"Right-click to toggle shuffle/random") \
+		2Filter35(button=1,size=menu,tip=_"Right-click to remove filters") 
+	  HBStatutSongList = -Total2(size=small)
+### Queue & Context 
+      VPQueueAndContext	= _Context _VBQueue
+        VBQueue = \
+		HBQueueActions  \
+		_QueueList(group=3,songtree=1,tabicon="",cols="queuenumber titleaa",colwidth="queuenumber 20 titleaa 248",showbb=1) \
+		HBQueueStatut
+	  HBQueueActions = VSeparator4 EditListButtons(group=3,small=1,relief=none) #-QueueActions 
+	  HBQueueStatut = -Total3(size="small",group=3)
+
+### optionnal right sidebar
+  VBSideBar = Quit2(icon=gmb-turnoff,size=menu,minwidth=34,maxwidth=34,tip=_"Quit") \
+		BMSettings2 \
+		HSeparator01 \
+		Prev2 Play2 Stop2 Next2(click2=NextAlbum) \
+		HSeparator02 \
+		ToggleButton00(relief=none,size=menu,icon=gtk-find,click1="RunPerlCode(::IdleScan)",tip=_"Scan Collection") \
+		ToggleButton01(relief=none,size=menu,click1="RunPerlCode(::IdleCheck)",tip=_"Check Collection",icon=gtk-refresh) \
+		HSeparator03 \
+		_VBVolume \
+		HSeparator04 \
+		ToggleButton02(relief=none,size=menu,icon=gmb-library,widget=VBLeft,tip=_"Library") \
+		ToggleButton03(relief=none,size=menu,icon=gmb-artist,widget=VBArtist,tip=_"Artist") \
+		ToggleButton04(relief=none,size=menu,icon=gmb-album,widget=VPMosaic,tip=_"Albums") \
+		ToggleButton05(icon=gmb-picture,relief=none,size=menu,widget=VBCover,tip=_"Show/Hide Cover") \
+		VBButtonMore \
+		VBBoutons \
+		VBButtonLess \
+		VBSearch1  \
+		VBSearch2 
+    BMSettings2	= (icon=gtk-preferences,size="menu") \
+		MenuItem31(togglewidget=HBButtons|HBSettings,togglegroup=2,label=_"Classic") \
+		MenuItem32(togglewidget=VBSideBar,togglegroup=2,label=_"With sidebar") \
+		SeparatorMenuItem30 \
+		LayoutItem2 \
+		PlayItem2 \
+		SeparatorMenuItem31 \
+		MenuItem33(click1=OpenCustom(Equalizer),label=_"Equalizer",icon=gmb-equalizer) \
+		SeparatorMenuItem32 \
+		MenuItem34(command=OpenPref,label=_"Settings",icon="gtk-preferences") \
+		MenuItem35(command=Quit,label=_"Quit",icon="gtk-quit")
+    VBVolume = 	VolumeIcon2(button=1,click2=mute,tip=_"Scrollwheel to change, right-click to mute") _VolumeSlider(1,0)
+    VBButtonMore = ToggleButton08(relief=none,togglegroup=3,size=menu,icon=gtk-add,widget=VPQueueAndContext|VBBoutons|VBButtonLess|HBBoutons|HBButtonLess,tip=_"Context or Queue")
+    VBBoutons = (togglegroup=3) \
+		HSeparator05 \
+		ToggleButton081(icon=gmb-queue,togglegroup=31,relief=none,size=menu,widget=VBQueue,tip=_"Queue") \
+		ToggleButton082(icon=gtk-about,togglegroup=31,relief=none,size=menu,widget=Context,tip=_"Context") \
+		ToggleButton083(icon=gmb-invert,togglegroup=31,relief=none,size=menu,widget=Context|VBQueue,tip=_"Context & Queue")
+    VBButtonLess = ToggleButton09(icon=gtk-remove,relief=none,size=menu,widget=VBButtonMore|HBButtonMore,togglegroup=3,tip=_"Less") HSeparator06
+    VBSearch1 = ToggleButton06(relief=none,size=menu,icon=gtk-find,widget=HBSearchbis|VBSearch2,togglegroup=1,tip=_"Switch between search fields")
+    VBSearch2 = ToggleButton07(relief=none,size=menu,icon=gtk-find,widget=ABSearchBox|VBSearch1,togglegroup=1,tip=_"Switch between search fields")
+
+### positioning and sizing ###
+HSize0		= 300 VBLeft VBArtist  
+HSize1		= 425 VPQueueAndContext
+VSize0		= 300 HBCover
+VSize1		= 144 VPMosaic
+Vsize2		= 160 VBQueue
+	
+
+
+
+
+
+

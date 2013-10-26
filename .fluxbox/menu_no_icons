@@ -1,0 +1,96 @@
+# This is an automatically generated file.
+# Please see <file:/usr/share/doc/menu/README> for information.
+
+# to use your own menu, copy this to ~/.fluxbox/menu, then edit
+# ~/.fluxbox/init and change the session.menuFile path to ~/.fluxbox/menu
+
+[begin] (VSIDO Fluxbox)
+[separator]	
+	[exec] (Run Program) {xfrun4} <>
+	[exec] (Terminal) {launch xfce4-terminal} <>
+	[exec] (Iceweasel) {launch iceweasel} <>
+	[exec] (SpaceFM) {launch spacefm} <>
+# Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
+[separator]	
+   [submenu] (Settings) {}
+         [exec] (Accessibility) {launch xmag}
+         [exec] (BootUp Manager) {su-to-root -X -c bum} <>
+         [exec] (Disk Manager) {su-to-root -X -c disk-manager} <>
+         [exec] (Gparted) {su-to-root -X -c gparted} <>
+         [exec] (Keyboard Settings) {xfce4-keyboard-settings} <>
+		 [exec] (Mouse Settings) {xfce4-mouse-settings} <> 	
+		 [exec] (Notifications) {xfce4-notifyd-config} <> 	
+         [exec] (Task Manager) {xfce4-taskmanager} <>
+      [end]
+[separator]	
+
+   [submenu] (Accessories) {}
+         [exec] (Application Finder) {xfce4-appfinder}
+         [exec] (Medit) {launch medit}
+         [exec] (Geany) {launch geany} <>
+         [exec] (LXAppearance) {/usr/bin/lxappearance} <>
+         [exec] (nitrogen) {/usr/bin/nitrogen} <>
+         [exec] (Screenshot) {launch xfce4-screenshooter} <>
+         [exec] (SpaceFM) {launch SpaceFM} <>		 		 		 
+         [exec] (SpaceFM File Search) {spacefm --find-files %F} <>		 		  
+         [exec] (Terminal) {launch xfce4-terminal} <>		 		 		 
+         [exec] (Xarchiver) {xarchiver} <>		 		 		 
+         [exec] (Htop) {xfce4-terminal -x htop}
+      [end]
+   [submenu] (Development) {}
+         [exec] (D-feet) {launch d-feet} <>
+         [exec] (Geany) {launch geany} <>
+         [exec] (Xcalc) {xcalc} <>
+      [end]
+      [submenu] (Graphics) {}
+         [exec] (Mirage) {launch mirage} <>
+         [exec] (Screenshot) {launch xfce4-screenshooter} <>
+      [end]
+      [submenu] (Internet) {}
+            [exec] (Ceni Settings) {xfce4-terminal -x ceni}
+            [exec] (FileZilla) {/usr/bin/filezilla}
+            [exec] (gFTP) {/usr/bin/gftp-gtk}
+        	[exec] (Iceweasel) {launch iceweasel} <>
+            [exec] (Transmission)) {launch transmission-gtk} 
+            [exec] (Uget) {/usr/bin/uget-gtk}			
+			[exec] (XChat IRC) {/usr/bin/xchat}
+         [end]
+      [submenu] (Multimedia) {}
+         [exec] (Audio Mixer) {launch /usr/bin/xfce4-mixer}
+         [exec] (GMusicBrowser) {launch ~/gmusicbrowser/gmusicbrowser.pl}
+         [exec] (Pithos - Pandora Front End) {launch pithos}
+         [exec] (puddletag) {launch puddletag}
+         [exec] (UMPlayer) {launch umplayer}
+         [exec] (Xfburn) {launch xfburn}
+		       [end]
+      [submenu] (System) {}
+            [exec] (bleachbit) {/usr/bin/bleachbit}
+            [exec] (bleachbit - root) {su-to-root -X -c bleachbit}
+            [exec] (Gdebi Package Installer) {su-to-root -X -c gdebi-gtk} <>
+            [exec] (Install VSIDO) {remsu /usr/bin/remastersys-installer gui} <>
+	        [exec] (Kernel Remover) {su-to-root -X -c /usr/sbin/kernel-remover} <> 	
+            [exec] (Disk Manager) {/usr/sbin/disk-manager}
+            [exec] (Gparted) {su-to-root -X -c /usr/sbin/gparted}
+            [exec] (Remastersys Backup) {remsu /usr/bin/remastersys-gui}
+            [exec] (Remastersys Grub Restore) {remsu /usr/bin/remastersys-grub-restore gui}
+            [exec] (Remastersys USB Startup Tool) {remsu /usr/bin/remastersys-usb-key-copy-tool}
+            [exec] (Root Terminal) {launch su-to-root -X -c xfce4-terminal} <>
+            [exec] (Root SpaceFM) {launch su-to-root -X -c spacefm} <>
+            [exec] (System Information) {/usr/bin/hardinfo}
+            [exec] (Aptitude Package Manager (text\)) { x-terminal-emulator -T "Aptitude Package Manager (text)" -e /usr/bin/aptitude-curses} <>
+         [exec] (Synaptic Package Manager) {su-to-root -X -c synaptic} <>
+         [end]
+[submenu] (Fluxbox) {Settings} <>
+        [config] (Fluxbox Menu)
+        [reconfig] (Reload Config)
+        [restart] (Restart Fluxbox)
+        [workspaces] (Workspaces)
+        [submenu] (Styles) {}
+          [stylesdir] (/usr/share/fluxbox/styles)
+          [stylesdir] (~/.fluxbox/styles)
+      [end]
+    [end]
+  [separator]
+   [exec] (Exit) {/usr/bin/vsido-exit-fb} <>   
+
+[end]

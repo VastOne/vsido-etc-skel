@@ -1,0 +1,75 @@
+# .conkyrc - Edited from various examples across the 'net
+# Used by VastOne on VSIDO
+#
+#
+
+background yes
+use_xft yes
+xftfont LaudatioC:size=12.5
+xftalpha 1.0
+update_interval 2
+total_run_times 0
+
+### Window
+own_window yes
+own_window_colour 010101
+own_window_type normal
+own_window_transparent yes
+own_window_title ConkySemi
+own_window_class conky-semi
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+###
+default_bar_size 240 6
+double_buffer yes
+minimum_size 1000 36
+maximum_width 1000
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+border_width 1
+border_inner_margin 0
+border_outer_margin 0
+if_up_strictness address
+max_specials 1024
+max_user_text 2048
+text_buffer_size 2048
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 1
+override_utf8_locale no
+use_spacer right
+short_units yes
+pad_percents 1
+top_name_width 12
+imlib_cache_size 128
+
+# Default colors and also border colors
+default_color 0F0F0F
+color0 000000
+color1 FFFFFF
+color2 FF0000
+color3 FFFF00
+color4 0000FF
+color5 00FF00
+color6 FFA500
+color7 00C8FF
+color8 FFFF00
+color9 F40E00
+
+default_shade_color color1
+default_outline_color color0
+
+alignment top_left
+# alignment top_middle
+# alignment bm
+gap_x 4
+gap_y 4
+
+# lua_load ~/Conky/LUA/draw-bg.lua
+# lua_draw_hook_pre draw_bg 10 0 0 0 0 0x000000 0.3
+
+TEXT
+${image $HOME/images/vsidoorb_blk.png -s 38x38 -p 1,-1}${offset 56}${voffset 4}${color 73AEB4}Kernel:${color 7D8C93}${offset 8}$kernel${offset 12}${color 73AEB4}Uptime:${offset 8}${color lime green}${uptime_short}${offset 12}${color 73AEB4}CPU:${offset 8}${color 7D8C93}${cpu cpu0}%${offset 12}${color 73AEB4}MEM:${offset 8}${color 7D8C93}${memperc}%${offset 8}${mem}${offset 4}/${offset 4}${memmax}${offset 12}${color 73AEB4}HD:${offset 8}${color 7D8C93}${execpi 30 hddtemp -n /dev/sda}°C${offset 12}${color 73AEB4}NET:${offset 8}${color 7D8C93}${voffset 1}${downspeedgraph eth0 12,65 000000 ff0000}${offset 12}${upspeedgraph eth0 12,65 000000 00ff00}

@@ -1,0 +1,23 @@
+[VastOne Thin Layout Black Desktop]
+Type=D
+Author=VastOne
+
+Window =  transparent=1
+DefaultFontColor= #CCCECF
+HBTime		= 6Filler1 Length(markup="$length",initsize="XX:XX",xalign=0) _TimeSlider(direct_mode=1,hover_delay=1,hover_layout_pos=  1w x w-p-21,hover_layout=nowplaying_screenlet_popup) PlayingTime(markup="%s",initsize="XX:XX",xalign=1)
+# HBButtons	= 10VolumeIcon
+HBTitle		= LockSong _Title 
+HBArtist	= LockArtist _Artist
+HBAlbum		= LockAlbum _Album
+VBText		= HBTitle HBArtist HBAlbum
+VBmain		= _VBText -HBTime VBBottom
+HBmain		= _VBmain Filler1 -Cover(forceratio=1)
+VBBottom	= HBTime
+VolumeScroll	= VolumeIcon
+
+[nowplaying_screenlet_popup]
+Window		= transparent=1
+HBmain=		3VolumeIcon 6Prev(size=small-toolbar) 6Play(size=small-toolbar) 6Next(size=small-toolbar) 3BMSettings
+BMSettings	= (icon=gtk-preferences,size=menu) MainMenuItem PSortItem SMLibrary LayoutItem QueueItem PFilterItem SeparatorMenuItem01 MenuItem14(command=OpenPref,label=_"Settings",icon="gtk-preferences") MenuItem05(command=Quit,label=_"Quit",icon="gtk-quit")
+SMLibrary	= (label=_"Library") MenuItem00(command="RunPerlCode(::ChooseAddPath(0,1))",label=_"Add Music",icon="gtk-add") MenuItem32(command="RunPerlCode(::IdleScan)",label=_"Rescan Collection",icon="gtk-refresh")
+VolumeScroll	= VolumeIcon

@@ -1,0 +1,21 @@
+[D_buttons_info_cover2]
+Type= D
+Name= _"Buttons, Info & Cover"
+Window =  transparent=1
+DefaultFontColor= white
+KeyBindings = a-Return OpenSongProp c-space PlayPause c-Left PrevSong c-Right NextSong c-Down DecVolume c-Up IncVolume a-Q Quit a-S ShowHide
+
+HBTitle         = _Title LabelsIcons
+HBArtist        = _Artist
+HBAlbum         = _Album -Year
+HBButtons       = _VBButtons -VolSlider
+VBButtons       = HBbuttons1 HBbuttons2
+HBbuttons1      = Prev Play Next -5Quit
+HBbuttons2      = 5_VBTimeBar -5ABSettings
+VBTimeBar       = 8Filler2 TimeBar(minheight=5,maxheight=7,minwidth=50,maxwidth=100) 5Filler5
+HBCover		= 5_Cover(default=elementary/no-cover.svg,forceratio=1,maxsize=0)
+VBmain          = 10_HBCover -2HBButtons -2HBAlbum -HBArtist -2HBTitle
+VolumeScroll    = VBmain
+ABSettings	= (yalign=0,yscale=0.0) HBSettings
+HBSettings	= ExtraButtons(size=large-toolbar) BMSettings
+BMSettings	= (icon=gtk-preferences,size="large-toolbar") MenuItem00(command="RunPerlCode(::IdleScan)",label=_"Rescan Collection",icon="gtk-refresh") MenuItem01(command=ShowHide,label=_"Show/Hide",icon=gmb-invert) MenuItem03(command=OpenContext,label=_"Settings",icon="gtk-info") MenuItem04(command=OpenPref,label=_"Settings",icon="gtk-preferences")

@@ -1,0 +1,48 @@
+[Foobar2000 Modified]
+Type=G+
+Category	= "Classic"
+Default		= Window(size=1000x640) VPRight(size=550-650) HPmain(size=300)
+MBmenu		= MainMenuItem LayoutItem PSortItem PFilterItem QueueItem 
+MBlist 		= HistItem LSortItem PlayItem
+HBmenu		= _MBmenu
+HBTitle		= LockSong _Title LabelsIcons
+HBArtist	= LockArtist _Artist
+HBAlbum		= LockAlbum _Album -Year
+VBText_Cover	= 2HBTitle 2HBArtist 2HBAlbum 10_Cover(size=300,click1=PopupCustom(CoverPopup))
+#VBText_Cover	= HBButtons1 2HBTitle 2HBArtist 2HBAlbum HBTime 10_Cover(size=300,click1=PopupCustom(CoverPopup))
+#VBplayer	= HBButtons3 _VBText_Cover
+TBContext   = _"Cover" VBText_Cover _"Context" Context 
+VBLeft		= _FilterPane3(nb=1,hidebb=1,pages=folder) _TBContext
+HPfp0		= FilterPane0(nb=2,hidebb=1,pages=year,genre) HPfp1
+HPfp1		= FilterPane1(nb=3,hidebb=1,pages=album) FilterPane2(nb=4,hidebb=1,pages=artist)
+HBSongList	= SimpleSearch(maxwidth=250) -FilterLock -PlayFilter -Refresh -ResetFilter -MBlist
+TBPlaylist  = _"Filtered" SongTree _"Queue" QueueList _"Playlists" TabbedLists
+VBSongList	= HBSongList _TBPlaylist
+HBButtons   = 5VolumeIcon Prev Stop Play Next ExtraButtons 2_Scale Time 5-Pref 2-Queue 2-Filter 2-Sort 5-Stars
+VPRight1	= HBButtons HPfp0
+VPRight     = VPRight1 _VBSongList
+HPmain		= VBLeft _VPRight
+VBmain		= HBmenu _HPmain Progress
+HSize0		= Filler0 LockArtist LockAlbum
+VolumeScroll	= VBplayer
+DefaultFocus	= Play
+
+
+[CoverPopup]
+VBmain= Cover(minsize=400,maxsize=800,click1=CloseWindow)
+KeyBindings	= Escape CloseWindow
+
+[Search]
+Type=S
+Default		= Window(size=320x540)
+Title		= _"Search"
+TBmain		= _"Artist" ArtistSearch(buttons=1) _"Album" AlbumSearch(buttons=1) _"Song" SongSearch(activate=play,buttons=1)
+DefaultFocus	= TBmain
+
+[Quick Search]
+Type=S
+Title		= _"Search"
+Default		= Window(size=620x540)
+VBmain		= SimpleSearch(activate=SetFocusOn(SongList)) _SongList(activate=play&CloseWindow)
+DefaultFocus	= SimpleSearch
+KeyBindings	= Escape CloseWindow

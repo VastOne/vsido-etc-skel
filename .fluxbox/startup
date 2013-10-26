@@ -1,0 +1,55 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+xmodmap "~/.Xmodmap"
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+#
+# Debian-local change:
+#   - fbautostart has been added with a quick hack to check to see if it
+#     exists. If it does, we'll start it up by default.
+which fbautostart > /dev/null
+if [ $? -eq 0 ]; then
+    fbautostart
+fi
+
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+# exec fluxbox
+
+fluxbox &
+fbpid=$!
+
+sleep 1
+{
+## vsido-welcome - post-installation script, will not run in a live session and
+## only runs once. Safe to remove.
+compton --config ~/.compton.conf &
+(sleep 3s && wicd-gtk --tray) &
+(sleep 3s && conky -c ~/.conkyrc) &
+nitrogen --restore &
+(sleep 3s && lxpanel) &
+## tint2 -c /usr/local/bin/.tint2oblaunchers/tint2rc &
+## (sleep 3s && tint2 -c /usr/local/bin/.tint2oblaunchers/tint2rcallbtm) &
+(sleep 6s && vsido-welcome --firstrun) &
+   # MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN & AT THE END.
+   # ipager &
+   # gkrellm2 &
+} &
+
+wait $fbpid
+
+# or if you want to keep a log:
+# exec fluxbox -log "~/.fluxbox/log"

@@ -1,0 +1,4 @@
+[Command]
+FileManager=spacefm %s
+Terminal=xfce4-terminal
+Logout=/usr/bin/vsido-exit

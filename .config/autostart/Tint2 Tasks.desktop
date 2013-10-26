@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.9.4
+Type=Application
+Name=Tint2 All Bottom
+Comment=Tint2 Tasks
+Exec=tint2 -c /usr/local/bin/.tint2launchers/tint2rcallbtm
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Hidden=true
+

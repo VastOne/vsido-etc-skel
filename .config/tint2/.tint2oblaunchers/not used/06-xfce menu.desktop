@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Xfce Menu
+Exec=xdotool key super+space
+Icon=package_system.png
+NoDisplay=false

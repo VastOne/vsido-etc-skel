@@ -1,0 +1,79 @@
+[Nawak]
+
+Type=G
+Default         = Window size=850x510 FPane1 artistinfo=1,albumpsize=32,albuminfo=1
+VolumeScroll      = HBmain
+Title                      = %n. %S - %l (%y) - %a
+
+HBmain         = _VBcontrolbrowser VPlibrary
+HSize0         = 420 TBlibrary
+HSize1         = LockArtist LockAlbum Sort
+
+
+VBcontrolbrowser   = HBcontrolpic HBTime _FRcover
+FRcover                     = Cover
+HBcontrolpic      = _VBcontrol 2Filler1
+  VBcontrol              = HBbuttonstimebar _VBtext
+   HBbuttonstimebar   = Prev Stop Play Next -Quit -Pref -Vol -Button0(stock=equalizer,activate=OpenCustom(Equalizer)) -Playlist(stock=loupe)
+   VBtext              = HBtitle HBartist HBalbum
+     HBtitle              = Sort _Title -Stars
+     HBartist      = LockArtist _Artist(markup=<small>%a</small>)
+     HBalbum      = LockAlbum _Album(markup=<small><i>%l</i></small>) -Date(markup=<small><i>%y</i></small>)
+    HBTime              = LabelTime Length _Scale
+
+TBlibrary              = List TabbedLists(group=1) Context Context
+
+VPlibrary                    =  _TBlibrary VPintermed
+
+VPintermed                 = FRinfo FRvisu
+
+
+VBinfo = Artist1(group=1,xalign=0.5,markup=<span foreground='#ffaf51' size="large">%a</span>) Album1(group=1,xalign=0.5) Title1(group=1,xalign=0.5,markup=<i>%t</i>)
+
+FRinfo = (shadow="etched-out") VBinfo
+FRvisu = Visuals
+
+
+
+[Equalizer]
+
+VB= _Equalizer
+Title= _"Equalizer"
+Window
+
+
+[Visuals]
+VBmain= _Visuals
+Title= _"Visualisations"
+Window
+
+[info2]
+Type=T
+HBbuttons       = Prev Stop Play Next
+HBAlbum      = _Album -Date
+VBText      = HBbuttons Title(30) Artist HBAlbum
+HBmain      = _VBText 2Filler1 -Cover(forceratio=1)
+VolumeScroll   = HBmain
+
+[perso_navig] based on Browser
+Default      = Window(size=1120x820) HPfp(size=180) HPbig(size=360) VPlistAA(size=645) FPane0(page=artist) FPane1(page=album)
+VBmain      = HBstat 5_HPbig
+HBstat          = _SimpleSearch -Total
+HPbig      = HPfp _VPlistAA
+HPfp      = FPane0(nb=1) FPane1(nb=2)
+VPlistAA   = _SongList
+
+
+#widget de bureau
+# type D layouts : for desktop widgets
+[D_insens_song_cover]
+Type= D
+Name= _"test_louis"
+Window = insensitive=1,transparent=1
+DefaultFontColor= white
+HBTitle      = _Title LabelsIcons
+HBArtist   = _Artist
+HBAlbum      = _Album -Year
+HBTime          = _Scale
+VBText      = 2HBTitle 2HBArtist 2HBAlbum 2HBTime
+VBmain      = VBText -Cover(forceratio=1,maxsize=0)

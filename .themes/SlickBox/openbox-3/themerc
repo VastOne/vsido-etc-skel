@@ -1,0 +1,131 @@
+!! SlickBox by SiEMA
+
+*.font: shadow=y:shadowtint=25:shadowoffset=1
+window.inactive.label.text.font:shadow=n
+menu.items.font:shadow=n
+
+menu.items.bg: flat horizontal gradient border
+menu.items.bg.color: #202020
+menu.items.bg.colorTo: #505050
+
+menu.items.active.bg: flat splitvertical gradient
+menu.items.active.bg.color: #909090
+menu.items.active.bg.color.splitTo: #f0f0f0
+menu.items.active.bg.colorTo: #404040
+menu.items.active.bg.colorTo.splitTo: #f0f0f0
+menu.items.active.text.color: #ffffff
+
+menu.items.text.color: #c0c0c0
+menu.items.justify: left
+menu.items.disabled.text.color: #606060
+
+menu.title.bg: flat splitvertical gradient border
+menu.title.text.color: #f0f0f0
+menu.title.text.justify: center
+
+menu.*.bg.color: #606060
+menu.*.bg.color.splitTo: #909090
+menu.*.bg.colorTo: #101010
+menu.*.bg.colorTo.splitTo: #606060
+menu.*.bg.border.color: #606060
+
+menu.border.width: 0
+menu.separator.color: #909090
+
+window.active.title.bg: flat splitvertical gradient
+window.active.title.bg.color: #606060
+window.active.title.bg.color.splitTo: #909090
+window.active.title.bg.colorTo: #101010
+window.active.title.bg.colorTo.splitTo: #606060
+window.active.title.bg.border.color: #777777
+window.active.border.color: #606060
+window.active.client.color:  #303030
+
+window.inactive.title.bg: flat splitvertical gradient
+window.inactive.title.bg.color: #606060
+window.inactive.title.bg.colorTo: #101010
+window.inactive.border.color: #606060
+window.inactive.client.color: #303030
+
+window.label.text.justify: center
+window.active.label.bg: parentrelative
+window.active.label.text.color: #f0f0f0
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #909090
+
+window.*.button.*.bg: flat splitvertical gradient
+
+window.active.button.*.bg.color: #606060
+window.active.button.*.bg.color.splitTo: #909090
+window.active.button.*.bg.colorTo: #101010
+window.active.button.*.bg.colorTo.splitTo: #606060
+
+window.inactive.button.*.bg.color: #606060
+window.inactive.button.*.bg.color.splitTo: #909090
+window.inactive.button.*.bg.colorTo: #101010
+window.inactive.button.*.bg.colorTo.splitTo: #606060
+
+window.*.button.disabled.bg: flat solid
+window.active.button.disabled.bg.color: #909090
+window.active.button.disabled.image.color: #606060
+window.inactive.button.disabled.bg.color: #e0e0e0
+window.inactive.button.disabled.image.color: #b0b0b0
+
+window.active.button.unpressed.image.color: #f0f0f0
+window.active.button.pressed.image.color: #c0c0c0
+window.active.button.toggled.image.color: #909090
+
+window.inactive.button.*.image.color: #c0c0c0
+
+window.active.button.*.pressed.bg: flat solid
+window.active.button.*.pressed.bg.color: #606060
+
+window.active.button.*.hover.bg: flat splitvertical gradient
+window.active.button.*.hover.bg.color: #f0f0f0
+window.active.button.*.hover.bg.color.splitTo: #f0f0f0
+window.active.button.*.hover.bg.colorTo: #a0a0a0
+window.active.button.*.hover.bg.colorTo.splitTo: #f0f0f0
+window.active.button.*.hover.image.color: #101010
+
+window.inactive.button.*.hover.image.color: #f0f0f0
+
+window.*.handle.bg: flat splitvertical gradient
+window.*.grip.bg: parentrelative
+
+window.active.handle.bg.color: #606060
+window.active.handle.bg.color.splitTo: #909090
+window.active.handle.bg.colorTo: #101010
+window.active.handle.bg.colorTo.splitTo: #606060
+
+window.inactive.handle.bg.color: #d0d0d0
+window.inactive.handle.bg.colorTo: #d0d0d0
+
+border.width: 1
+padding.width: 3
+padding.height: 2
+window.handle.width: 3
+window.client.padding.width: 1
+window.client.padding.height: 1
+menu.overlap: 0
+
+osd.border.color: #404040
+osd.border.width: 1
+
+osd.bg: flat splitvertical gradient
+osd.bg.color: #606060
+osd.bg.color.splitTo: #909090
+osd.bg.colorTo: #101010
+osd.bg.colorTo.splitTo: #606060
+
+osd.label.bg: parentrelative
+osd.label.text.color: #f0f0f0
+
+osd.hilight.bg: flat splitvertical gradient 
+osd.hilight.bg.color: #606060
+osd.hilight.bg.color.splitTo: #909090
+osd.hilight.bg.colorTo: #101010
+osd.hilight.bg.colorTo.splitTo: #606060
+
+osd.unhilight.bg: flat splitvertical gradient
+osd.unhilight.bg.color: #d0d0d0
+osd.unhilight.bg.colorTo: #d0d0d0

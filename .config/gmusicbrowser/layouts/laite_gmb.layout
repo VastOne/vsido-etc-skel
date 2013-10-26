@@ -1,0 +1,91 @@
+[laiteGMB]
+
+Author = "laite"
+Type=G
+
+Category = laite
+
+Default = Window(size=80%x80%,sticky=0)
+
+VolumeScroll = VBfirst
+
+VBfirst = 5Filler5 HPTitleAndStats _HPall 2Filler6
+
+
+        HPTitleAndStats = _HBTitleAndAlterReplayButtons
+
+            HBTitleAndAlterReplayButtons = \
+                HBAlterReplayButtons \
+                _HBTitle \
+                3LabelTime2(markup='%s  ',initsize="-XX:XX",xalign=0) \
+                _HBAlterTimeBar \
+                3Time1(markup='%m',initsize="-XX:XX")
+
+                HBAlterTimeBar = _Scale2
+
+
+                HBAlterReplayButtons = 0Filler51 \
+                    HBVolume \
+                    Prev1(tip=_"Previous Song") \
+                    Play1(tip=_"Play/Pause") \
+                    Next1(tip=_"Next Song") \
+                    5Filler61
+
+            HBVolume = VolumeIcon(button=0)
+
+            HBTitle = \
+                Stars(yalign=0.5) \
+                5Filler59 \
+                VBLabelsIcons \
+                5Filler60 \
+                LockSong(stock="on:gmb-lock gmb-locklight off:gmb-breadcrumb-song gmb-lock") \
+                Title(expand_max=300,minsize=1,markup="<big><b>%t</b></big> ",click1="",yalign=0.5) \
+                LockAlbum(stock="on:gmb-lock gmb-locklight off:gmb-breadcrumb-tapealbum gmb-lock") \
+                Album(minsize=1,expand_max=200,yalign=0.5,minsize=0,markup="<big> </big>%l ",showcover=0) \
+                LockArtist(stock="on:gmb-lock gmb-locklight off:gmb-breadcrumb-artist gmb-lock") \
+                Artist(expand_max=200,yalign=0.5,minsize=0,markup="<big> </big>%a")
+
+                VBLabelsIcons = 2Filler40 _LabelsIcons
+
+  
+        HPall = VPpanelyr VBcenter
+
+        VPpanelyr = _NBMain
+
+                NBMain = (tabpos="top",pages="PluginLyrics QueueList VPFilterTrio") \
+                    PluginLyrics(shadow=none,HideToolbar=1) \
+                    VPFilterTrio \
+                    QueueList(songtree=1,cols="albumminipic titleaa length")
+
+            VPFilterTrio = (tabtitle=_"Filters",tabicon="gmb-lock") _VPFilters
+
+            VPFilters 	=  \
+                FPane1(tabpos=left90,group=2,nb=1,pages=genre, hidebb=1) \
+                VPFilter1
+
+                VPFilter1 = \
+                    FPane2(tabpos=left90,group=2,nb=2,pages=album, hidebb=1) \
+                    FPane3(tabpos=left90,group=2,nb=3,pages=artist, hidebb=1)
+
+            VBcenter = 3Filler92 HBSongTree _SongTree(group=2)
+
+                HBSongTree	= ResetFilter(group=2) \
+                    3Pref(size=menu) \
+                    Button2(click1="RunPerlCode(::IdleCheck)",size=menu,stock=gtk-refresh,tip=_"check now") \
+                    Button3(click1="RunPerlCode(::IdleScan)",size=menu,stock=gtk-zoom-in,tip=_"scan now") \
+ 
+                      HBSongTreeAct = QueueFilter \
+                      PlayFilter \
+                      Button(size=menu,group=2,click1=GoToCurrentSong,stock=gtk-jump-to,tip=_"Go to playing song") \
+                      Sort(button=1) \
+                      Filter(button=1) \
+                      Pos \
+                      Total(size=small,group=2) \
+                      _SimpleSearch(noselector=0,suggest=0,group=2) \
+                      -MBSongTree
+
+                      MBSongTree = LSortItem(group=2) \
+                                   PlayItem(group=2) \
+                                   QueueItem1(label="Queue",group=2)
+
+

@@ -1,0 +1,43 @@
+[nowplaying_screenlet2]
+Type=D
+DefaultFont=8
+Window		= size=240x240,transparent=1
+VBmain= Title(xalign=.5) Artist(xalign=.5) Album(xalign=.5) HBTime _Cover(forceratio=1,hover_delay=1,hover_layout=nowplaying_screenlet2_popup) 
+HBTime		= Length(markup="$length",initsize="XX:XX",xalign=0) _TimeSlider(direct_mode=1) PlayingTime(markup="%s",initsize="XX:XX",xalign=1) 
+
+[nowplaying_screenlet_vastone2]
+Type=D
+DefaultFont=8
+Window        = size=240x240,transparent=1
+VBmain= Title(xalign=.5) Artist(xalign=.5) Album(xalign=.5) _Cover(forceratio=1,hover_delay=1,hover_layout=nowplaying_screenlet2_popup) -HBTime
+HBTime        = Length(markup="$length",initsize="XX:XX",xalign=0) _TimeBar(direct_mode=1) PlayingTime(markup="%s",initsize="XX:XX",xalign=1) 
+
+
+[nowplaying_screenlet2_popup]
+Window		= transparent=1
+HBmain=		12Prev 12Play 12Next 12BMSettings 12VolumeIcon
+ BMSettings	= (icon=gtk-preferences,size=menu) MainMenuItem PSortItem SMLibrary LayoutItem QueueItem PFilterItem SeparatorMenuItem01 MenuItem14(command=OpenPref,label=_"Settings",icon="gtk-preferences") MenuItem05(command=Quit,label=_"Quit",icon="gtk-quit")
+SMLibrary	= (label=_"Library") MenuItem00(command="RunPerlCode(::ChooseAddPath(0,1))",label=_"Add Music",icon="gtk-add") MenuItem32(command="RunPerlCode(::IdleScan)",label=_"Rescan Collection",icon="gtk-refresh")
+VolumeScroll	= VolumeIcon
+
+[nowplaying_screenlet3]
+Type=D
+DefaultFont=8
+Window		= size=240x240,transparent=1
+VBmain= HBbuttons _Cover(forceratio=1) TimeBar Title(xalign=.5) Artist(xalign=.5) Album(xalign=.5)
+HBbuttons = Prev Stop Play Next
+
+[nowplaying_screenlet4]
+Type=D
+DefaultFont=8
+Window		= size=240x240,transparent=1
+VBmain= ABbuttons _Cover(forceratio=1) TimeBar Title(xalign=.5) Artist(xalign=.5) Album(xalign=.5)
+ABbuttons= (xalign=.5,xscale=0) HBbuttons
+HBbuttons = Prev Stop Play -Next
+
+[nowplaying_timeslider_rizlaw]
+Type=D
+DefaultFont=8
+Window		= size=240x240,transparent=1
+VBmain= HBtime _Cover(forceratio=1,hover_delay=1,hover_layout=nowplaying_screenlet2_popup)  Title(xalign=.5) Artist(xalign=.5) Album(xalign=.5)
+HBtime= Length(markup="$length",initsize="XX:XX",xalign=0) _TimeSlider(direct_mode=1) PlayingTime(markup="%s",initsize="XX:XX",xalign=1)

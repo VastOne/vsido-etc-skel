@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Xfce Menu
+Exec=xdotool key ctrl+alt+q
+Icon=/usr/local/bin/images/vsidoorb_blk.png
+NoDisplay=false

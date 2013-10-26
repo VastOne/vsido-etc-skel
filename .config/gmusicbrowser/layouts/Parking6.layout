@@ -1,0 +1,128 @@
+[Parking6]
+Type=G+
+Title		= "gmusicbrowser"
+Category 	= "Garage"
+DefaultFocus	= SimpleSearch1
+VolumeScroll 	= HBVolume
+Default		= Window(size=1370x750)
+Window		= hidden=HBSongPlaylist|VBContextMain|NBContext|HBContextClose|VBQueue|VBPictureAlbum|VBSongInfos
+Author		= Major Grubert (inspired by Shimmer layouts)
+
+# Main : panel / bottom
+
+VBMain		= HBTop HSeparator _HPMain
+
+HBTop		=  2Filler20 HBButtons(yalign=0.5) 10Filler22 _VBPlayer(yalign=0.5) 10Filler23 HBSettings(yalign=0.5) 2Filler24
+  HBButtons	= _Filler30 Prev Play Next(click2=NextAlbum,tip=_"Middle-clic for next album") _Filler31
+  VBPlayer 	= _Filler60 HBTitle HBTimeSlider _Filler61
+    HBTitle 	= Title(markup="<big><b>%t</b></big> ",click1="",tip=_"Title: %t (Track No. %n)",yalign=0.5) \
+		_Filler10 \
+		Album(yalign=0.5,markup="%l (%Y)",showcover=0) \
+		_Filler11 \
+		Artist(xalign=1,markup="<b>%a</b>")
+    HBTimeSlider = \
+		PlayingTime(markup="%s",initsize="XX:XX",xalign=0) \
+		_TimeSlider(direct_mode=1) \
+		-Length(markup="$length",initsize="XX:XX",xalign=1)
+  HBSettings = _Filler70 HBSettings1 HBSettings2  _Filler71
+    HBSettings1 = _Filler90 \
+		HBVolume \
+		ExtraButtons \
+		_Filler91
+  	HBVolume	= VolumeIcon(button=0,click2=mute,tip=_"Scrollwheel to change, right-click to mute")
+    HBSettings2	= _Filler80 BMSettings Quit1(icon=gmb-turnoff,size=large-toolbar,minwidth=34,maxwidth=34,tip=_"Quit") _Filler81
+        BMSettings = (icon=gtk-preferences,size=large-toolbar) \
+		SMLibrary \
+		LayoutItem \
+		PlayItem \
+		SeparatorMenuItem02 \
+		MenuItem03(click1=OpenCustom(Equalizer),label=_"Equalizer",icon=gmb-equalizer) \
+		SeparatorMenuItem03 \
+		MenuItem04(command=OpenPref,label=_"Settings",icon="gtk-preferences")
+	SMLibrary = (label=_"Library") \
+		MenuItem10(command="RunPerlCode(::ChooseAddPath(0,1))",label=_"Add Music",icon="gtk-add") \
+		MenuItem11(command="RunPerlCode(::IdleScan)",label=_"Scan Collection",icon="gtk-refresh") \
+		MenuItem12(command="RunPerlCode(::IdleCheck)",label=_"Check Collection",icon="gtk-zoom-in")
+
+## main : left / right
+HPMain		= _HPLeft _HPRight
+### Left 
+HPLeft 	= _VBLibrary _VBArtist 
+### Library filter
+VBLibrary 	= ABSearchBox _FilterPane0(nb=2,hidebb=1,hidetabs=0,tabpos=bottom,\
+		pages=savedtree|folder,\
+		page=savedtree)
+  ABSearchBox = (yalign=0) SimpleSearch1(suggest=1)
+#### Artist Filter
+VBArtist 	= _FilterPane1(nb=3,hidebb=1,hidetabs=0,tabpos=bottom,\
+		page=artists,\
+		pages=artists|genre|year|added,\
+		page_artists/mode=cloud,\
+		page_artists/cloud_max=35,\
+		page_artists/cloud_min=10,\
+		page_genre/mode=cloud,\
+		page_genre/cloud_max=35,\
+		page_genre/cloud_min=10,\
+		page_year/cloud_max=40,\
+		page_year/cloud_min=12,\
+		page_year/mode=cloud,\
+		page_added/depth=1,\
+		page_added/type="added.year|added.month")
+
+#### Right main panel
+HPRight 	= _VBSongStatus _VBContextMain
+##### Library
+VBSongStatus 	= _VBAlbumsAndMosaicSongList HBTotal
+  VBAlbumsAndMosaicSongList = VBAlbum _VBSongList
+  	VBAlbum = _FilterPane2(nb=4,hidebb=1,hidetabs=1,\
+		pages=album,page=album,page_album/mode=mosaic)
+  	VBSongList = _HBSongListtree
+    	  HBSongListtree =  \
+		_SongTree(cols="playandqueueandtrack title length playcount genre",colwidth="artist 124 lastplay 107 length 49 playandqueue 19 playandqueueandtrack 20 playcount 22 title 344 titleaa 397 track 21",grouping="album|artistalbum_breadcrumbs(picsize=100)|disc|discleft(width=15)",follow=1,sort="year album disc track") \
+		_HBSongPlaylist 
+      	    HBSongPlaylist = _SongList(cols="playandqueueandtrack title artist album year length playcount",sort=artist,colwidth="album 200 artist 200 file 400 lastplay 100 length 41 path 413 playandqueueandtrack 24 playcount 96 rating 80 title 270 track 21 year 31",follow=1,sort="year album disc track")
+      HBTotal = _HBToggle HBStatutSongList
+	HBToggle = \
+		ToggleButton30(relief=none,size=menu,icon=gmb-view-list,widget=HBSongPlaylist,togglegroup=30,tip=_"Simple List View") \
+		ToggleButton31(relief=none,size=menu,icon=gmb-view-tree,widget=SongTree,togglegroup=30,tip=_"Songtree View") \
+		VSeparator30 \
+		Sort(button=1,size=menu,tip=_"Right-click to toggle shuffle/random") \
+		2Filter35(button=1,size=menu,tip=_"Right-click to remove filters") \
+		VSeparator31 \
+		Queue1 10Pos
+	HBStatutSongList = -HBButtonContext -Total2(size=small) 
+	HBButtonContext = \
+		ToggleButton24(relief=none,togglegroup=98,size=small-toolbar,icon=gtk-add,widget=VBContextMain|HBContextClose,tip=_"Open queue & context panel") 
+	   
+
+##### Context
+VBContextMain 	= HBContextStatut _VBContext
+HBContextStatut = HBButtomLyrics HBButtomQueue HBButtomContext HBButtomCover HBButtomSongInfos -HBContextClose
+		HBButtomQueue 	= ToggleButton41(togglegroup=66,relief=none,size=menu,icon=gmb-queue,widget=VBQueue,tip=_"Queue panel")
+		HBButtomContext = ToggleButton42(togglegroup=66,relief=none,size=menu,icon=gtk-about,widget=NBContext,tip=_"Context panel")
+		HBButtomLyrics 	= ToggleButton43(togglegroup=66,relief=none,size=menu,icon=gmb-song,widget=VBLyrics,tip=_"Lyrics panel")
+		HBButtomCover	= ToggleButton44(togglegroup=66,relief=none,size=menu,icon=gmb-picture,widget=VBPictureAlbum,tip=_"Cover panel")
+		HBButtomSongInfos = ToggleButton45(togglegroup=66,relief=none,size=menu,icon=gtk-find,widget=VBSongInfos,tip=_"Song infos panel")
+		HBContextClose 	= ToggleButton25(relief=none,togglegroup=98,size=menu,icon=gtk-clear,widget=HBButtonContext,tip=_"Close whole panel")
+
+VBContext 	= _VBLyrics _VBQueue _NBContext _VBPictureAlbum _VBSongInfos
+	VBQueue = _QueueList(group=3,songtree=1,tabicon="",cols="queuenumber titleaa",colwidth="queuenumber 20 titleaa 248",showbb=1) \
+		 HBQueueActions
+  		HBQueueActions = EditListButtons(group=3,small=1,relief=none) -Total3(size="small",group=3)
+	NBContext = VBArtistinfo VBAlbuminfo
+			VBArtistinfo	= (tabtitle="Artiste",tabicon="gmb-artist") _PluginArtistinfo
+			VBAlbuminfo	= (tabtitle="Album",tabicon="gmb-album") _PluginAlbuminfo
+	VBLyrics	= _PluginLyrics
+	VBPictureAlbum	= _PictureBrowser
+	VBSongInfos	= _@song_info
+
+
+
+
+
+### positioning and sizing ###
+HSize0		= 110 VBCover
+HSize1		= 400 VBLeft VBRight
+HSize2		= 200 VBLibrary VBArtist VBAlbum VBAlbum HPContextMain
+VSize0		= 110 VBAlbum
+

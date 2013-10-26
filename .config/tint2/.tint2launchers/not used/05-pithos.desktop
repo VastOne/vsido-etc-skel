@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Pithos
+Exec=launch pithos
+Icon=music.png
+Categories=Audio;AudioVideo;
+StartupNotify=true

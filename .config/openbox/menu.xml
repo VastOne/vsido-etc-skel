@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Openbox 3">
+		<separator label="= VSIDO ="/>
+		<item label="Run Program">
+			<action name="Execute">
+				<execute>
+					gmrun
+				</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Terminal">
+			<action name="Execute">
+				<execute>
+					xfce4-terminal
+				</execute>
+			</action>
+		</item>
+		<item label="IceWeasel">
+			<action name="Execute">
+				<execute>iceweasel</execute>
+			</action>
+		</item>
+		<item label="SpaceFM">
+			<action name="Execute">
+				<execute>spacefm</execute>
+			</action>
+		</item>
+		<item label="Medit">
+			<action name="Execute">
+				<execute>medit</execute>
+			</action>
+		</item>
+		<item label="UMPlayer">
+			<action name="Execute">
+				<execute>umplayer</execute>
+			</action>
+		</item>
+		<separator/>
+		<menu id="accessories" label="Accessories">
+			<item label="Archive Manager">
+				<action name="Execute">
+					<execute>
+						xarchiver
+					</execute>
+				</action>
+			</item>
+			<item label="Medit">
+				<action name="Execute">
+					<execute>medit</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="graphics" label="Graphics">
+			<menu id="graphics-443743" label="Compton Compositor">
+				<item label="Start Compton">
+					<action name="Execute">
+						<execute>compton --config ~/.compton.conf</execute>
+					</action>
+				</item>
+				<item label="Stop Compton">
+					<action name="Execute">
+						<execute>killall compton</execute>
+					</action>
+				</item>
+				<item label="Edit Compton config">
+					<action name="Execute">
+						<execute>medit ~/.compton.conf</execute>
+					</action>
+				</item>
+			</menu>
+			<item label="Mirage Image Viewer">
+				<action name="Execute">
+					<execute>mirage</execute>
+				</action>
+			</item>
+			<menu id="graphicsScreenshots" label="Take Screenshot">
+				<item label="Now">
+					<action name="Execute">
+						<execute>scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; mirage ~/images/$f'</execute>
+					</action>
+				</item>
+				<item label="Select Area">
+					<action name="Execute">
+						<execute>scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; mirage ~/images/$f'</execute>
+					</action>
+				</item>
+				<item label="05 Seconds">
+					<action name="Execute">
+						<execute>scrot -d 5 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; mirage ~/images/$f'</execute>
+					</action>
+				</item>
+				<item label="10 Seconds">
+					<action name="Execute">
+						<execute>scrot -d 10 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; mirage ~/images/$f'</execute>
+					</action>
+				</item>
+				<item label="15 Seconds">
+					<action name="Execute">
+						<execute>scrot -d 15 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; mirage ~/images/$f'</execute>
+					</action>
+				</item>
+				<item label="20 Seconds">
+					<action name="Execute">
+						<execute>scrot -d 20 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; mirage ~/images/$f'</execute>
+					</action>
+				</item>
+			</menu>
+			<separator/>
+			<menu id="graphicsOnline" label="Online Tools">
+				<item label="Colour Lovers">
+					<action name="Execute">
+						<execute>
+							x-www-browser http://www.colourlovers.com/
+						</execute>
+					</action>
+				</item>
+				<item label="Color Hunter">
+					<action name="Execute">
+						<execute>
+							x-www-browser http://colorhunter.com/
+						</execute>
+					</action>
+				</item>
+				<item label="Vector Magic">
+					<action name="Execute">
+						<execute>
+							x-www-browser http://vectormagic.stanford.edu/
+						</execute>
+					</action>
+				</item>
+				<item label="FavIcon from Pics">
+					<action name="Execute">
+						<execute>
+							x-www-browser http://www.htmlkit.com/services/favicon/
+						</execute>
+					</action>
+				</item>
+			</menu>
+		</menu>
+		<menu id="multimedia" label="Multimedia">
+			<item label="GMusicBrowser">
+				<action name="Execute">
+					<execute>~/gmusicbrowser/gmusicbrowser.pl</execute>
+				</action>
+			</item>
+			<item label="Pithos - Pandora Front End">
+				<action name="Execute">
+					<execute>pithos</execute>
+				</action>
+			</item>
+			<item label="Puddletag Tag Editor">
+				<action name="Execute">
+					<execute>puddletag</execute>
+				</action>
+			</item>
+			<item label="UMPlayer">
+				<action name="Execute">
+					<execute>umplayer</execute>
+				</action>
+			</item>
+			<item label="Xfburn">
+				<action name="Execute">
+					<execute>
+						xfburn
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="network" label="Network">
+			<item label="Iceweasel">
+				<action name="Execute">
+					<execute>iceweasel</execute>
+				</action>
+			</item>
+			<item label="Filezilla">
+				<action name="Execute">
+					<execute>filezilla</execute>
+				</action>
+			</item>
+			<item label="Transmission">
+				<action name="Execute">
+					<execute>transmission-gtk</execute>
+				</action>
+			</item>
+			<item label="Ceni Settings">
+				<action name="Execute">
+					<execute>xfce4-terminal -x ceni</execute>
+				</action>
+			</item>
+			<item label="XChat IRC Client">
+				<action name="Execute">
+					<execute>
+						xchat
+					</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<menu execute="~/.config/openbox/pipemenus/obpipemenu-places ~/" id="places" label="Places"/>
+		<separator/>
+		<menu id="settings" label="Settings">
+			<menu id="obConfig" label="Openbox Config">
+				<item label="GUI Menu Editor">
+					<action name="Execute">
+						<execute>
+							obmenu
+						</execute>
+					</action>
+				</item>
+				<item label="GUI Config Tool">
+					<action name="Execute">
+						<execute>
+							obconf
+						</execute>
+					</action>
+				</item>
+				<item label="Appearance">
+					<action name="Execute">
+						<execute>lxappearance</execute>
+					</action>
+				</item>
+				<separator/>
+				<item label="Edit autostart.sh">
+					<action name="Execute">
+						<execute>
+							medit ~/.config/openbox/autostart.sh
+						</execute>
+					</action>
+				</item>
+				<item label="Edit menu.xml">
+					<action name="Execute">
+						<execute>
+							medit ~/.config/openbox/menu.xml
+						</execute>
+					</action>
+				</item>
+				<item label="Edit rc.xml">
+					<action name="Execute">
+						<execute>
+							medit ~/.config/openbox/rc.xml
+						</execute>
+					</action>
+				</item>
+				<separator/>
+				<item label="Reconfigure">
+					<action name="Reconfigure"/>
+				</item>
+				<item label="Restart">
+					<action name="Restart"/>
+				</item>
+			</menu>
+			<menu id="conkyconfig" label="Conky Config">
+				<item label="Edit .conkyrc">
+					<action name="Execute">
+						<execute>
+							medit ~/.conkyrc
+						</execute>
+					</action>
+				</item>
+				<separator label="Help?"/>
+				<item label="man page">
+					<action name="Execute">
+						<execute>
+							xfce4-terminal --command=&quot;man conky&quot;
+						</execute>
+					</action>
+				</item>
+				<item label="Wiki Page">
+					<action name="Execute">
+						<execute>x-www-browser http://conky.sourceforge.net/</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="gmrunconfig" label="gmrun Config">
+				<item label="Edit config file">
+					<action name="Execute">
+						<execute>
+							medit ~/.gmrunrc
+						</execute>
+					</action>
+				</item>
+				<separator label="Help?"/>
+				<item label="man page">
+					<action name="Execute">
+						<execute>
+							xfce4-terminal --command=&quot;man gmrun&quot;
+						</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="settings-285958" label="Compton">
+				<item label="Start">
+					<action name="Execute">
+						<execute>compton --config ~/.compton.conf</execute>
+					</action>
+				</item>
+				<item label="Stop">
+					<action name="Execute">
+						<execute>killall compton</execute>
+					</action>
+				</item>
+				<item label="Edit">
+					<action name="Execute">
+						<execute>medit ~/.compton.conf</execute>
+					</action>
+				</item>
+			</menu>
+			<item label="Appearance">
+				<action name="Execute">
+					<execute>lxappearance</execute>
+				</action>
+			</item>
+			<item label="Edit Default Applications">
+				<action name="Execute">
+					<execute>
+						xfce4-terminal --command=&quot;sudo update-alternatives --all&quot;
+					</execute>
+				</action>
+			</item>
+			<item label="Choose Wallpaper">
+				<action name="Execute">
+					<execute>nitrogen --sort=alpha /usr/local/bin/images</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-483216" label="Tools">
+			<item label="Boot Up Manager (bum)">
+				<action name="Execute">
+					<execute>gksu bum</execute>
+				</action>
+			</item>
+			<item label="bleachbit">
+				<action name="Execute">
+					<execute>bleachbit</execute>
+				</action>
+			</item>
+			<item label="bleachbit (root)">
+				<action name="Execute">
+					<execute>gksu bleachbit</execute>
+				</action>
+			</item>
+			<item label="GDebi Package Installer">
+				<action name="Execute">
+					<execute>gdebi-gtk</execute>
+				</action>
+			</item>
+			<item label="Htop">
+				<action name="Execute">
+					<execute>xfce4-terminal -x htop</execute>
+				</action>
+			</item>
+			<item label="Task Manager">
+				<action name="Execute">
+					<execute>xfce4-taskmanager</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="system" label="System">
+			<item label="Install VSIDO">
+				<action name="Execute">
+					<execute>remsu /usr/bin/remastersys-installer gui</execute>
+				</action>
+			</item>
+			<item label="Synaptic">
+				<action name="Execute">
+					<execute>gksu synaptic</execute>
+				</action>
+			</item>
+			<item label="Disk Manager">
+				<action name="Execute">
+					<execute>gksu disk-manager</execute>
+				</action>
+			</item>
+			<item label="GParted">
+				<action name="Execute">
+					<execute>gksu gparted</execute>
+				</action>
+			</item>
+			<item label="SpaceFM Root">
+				<action name="Execute">
+					<execute>gksu spacefm</execute>
+				</action>
+			</item>
+			<item label="Medit Root">
+				<action name="Execute">
+					<execute>gksu medit</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<item label="Exit">
+			<action name="Execute">
+				<execute>/usr/bin/vsido-exit</execute>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>

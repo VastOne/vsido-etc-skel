@@ -1,0 +1,7 @@
+[Slider]
+Type= D
+Name = _"Slider"
+Window =  transparent=1
+VBmain = \
+    -HBTime
+HBTime		= Length(markup="$length",initsize="XX:XX",xalign=0) _TimeSlider(direct_mode=1) PlayingTime(markup="%s",initsize="XX:XX",xalign=1)

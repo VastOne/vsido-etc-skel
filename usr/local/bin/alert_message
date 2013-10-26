@@ -1,0 +1,17 @@
+Alerts Last Modified: 2 September 2013 17:46 (gmt)
+------------------------------------------------------------------
+1. Ceni users: you'll need to manually update ceni from the smxi package install
+section, it has changed dependencies. If your ceni is in your distro repo, ignore this.
+-----------------------------------------------------------------
+2. You may see a strange text item appear during your upgrade. To get this to 
+close, hit 'q' and the upgrade will continue, or q + enter, or just enter alone.
+-----------------------------------------------------------------
+3. NFS users: Replacing portmap with rpcbind fixes broken NFS, I suggest if you
+are using NFS, first install rpcbind and then do the upgrade.
+-----------------------------------------------------------------
+4. possible grub 2 error. I have heard nothing more about this so assume it's ok.
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=708084 Not sure if this
+issue is still valid or not, the bug reporter and report have not been updated.
+-----------------------------------------------------------------
+5. The upgrade to PERL 5.18 is largely complete in Sid now, but watch for issues in
+your upgrade, like removed packages that should not be removed.

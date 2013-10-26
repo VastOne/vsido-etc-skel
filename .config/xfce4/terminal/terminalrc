@@ -1,0 +1,27 @@
+[Configuration]
+BackgroundMode=TERMINAL_BACKGROUND_IMAGE
+BackgroundImageFile=/usr/local/bin/images/vsidoorb_blk_sm.png
+BackgroundImageStyle=TERMINAL_BACKGROUND_STYLE_CENTERED
+BackgroundDarkness=0.200000
+ColorForeground=#efefefefefef
+ColorCursor=#efefefefefef
+FontName=Liberation Mono 14
+MiscAlwaysShowTabs=FALSE
+MiscBell=FALSE
+MiscBordersDefault=TRUE
+MiscCursorBlinks=FALSE
+MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
+MiscDefaultGeometry=80x24
+MiscInheritGeometry=FALSE
+MiscMenubarDefault=TRUE
+MiscMouseAutohide=FALSE
+MiscToolbarDefault=FALSE
+MiscConfirmClose=TRUE
+MiscCycleTabs=TRUE
+MiscTabCloseButtons=TRUE
+MiscTabCloseMiddleClick=TRUE
+MiscTabPosition=GTK_POS_TOP
+MiscHighlightUrls=TRUE
+ScrollingLines=10000
+ShortcutsNoMenukey=TRUE
+

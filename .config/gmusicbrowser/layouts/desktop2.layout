@@ -1,0 +1,22 @@
+[D_buttons_info_cover]
+Type= D
+Name= _"Buttons, Info & Cover II"
+Window =  transparent=1
+DefaultFontColor= white
+KeyBindings = a-Return OpenSongProp c-space PlayPause c-Left PrevSong c-Right NextSong c-Down DecVolume c-Up IncVolume a-Q Quit a-S ShowHide
+
+HBTitle         = _Title LabelsIcons
+HBArtist        = _Artist
+HBAlbum         = _Album -Year
+HBButtons       = _VBButtons 
+VBButtons       = HBbuttons1 HBbuttons2
+HBbuttons1      = Prev Play Next 7VolumeIcon HBSettings
+HBbuttons2      = 7_HBTime
+HBTime		= Length(markup="$length",initsize="XX:XX",xalign=0) _TimeSlider(direct_mode=1) PlayingTime(markup="%s",initsize="XX:XX",xalign=1)
+HBCover		= 5_Cover(default=elementary/no-cover.svg,forceratio=1,maxsize=0)
+VBmain          = 10_HBCover -2HBButtons -2HBAlbum -HBArtist -2HBTitle
+VolumeScroll    = VBmain
+# ABSettings	= (yalign=0,yscale=0.0) 
+HBSettings	= ExtraButtons(size=large-toolbar) BMSettings
+BMSettings	= (icon=gtk-preferences,size=menu) MainMenuItem PSortItem SMLibrary LayoutItem QueueItem PFilterItem SeparatorMenuItem01 MenuItem14(command=OpenPref,label=_"Settings",icon="gtk-preferences") MenuItem05(command=Quit,label=_"Quit",icon="gtk-quit")
+SMLibrary	= (label=_"Library") MenuItem00(command="RunPerlCode(::ChooseAddPath(0,1))",label=_"Add Music",icon="gtk-add") MenuItem32(command="RunPerlCode(::IdleScan)",label=_"Rescan Collection",icon="gtk-refresh")

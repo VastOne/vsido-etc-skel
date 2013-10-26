@@ -1,0 +1,14 @@
+[ButtonsTG]
+Type= D
+Name = _"ButtonsTG"
+Window =  transparent=1
+VBmain = \
+#    -HBbuttons2 \
+    -HBbuttons \
+    -HBTime
+HBbuttons =	1Filler1 5VolumeIcon 15Prev 15Play 15Next 15BMSettings
+BMSettings	= (icon=gtk-preferences,size=menu) MainMenuItem PSortItem SMLibrary LayoutItem QueueItem PFilterItem SeparatorMenuItem01 MenuItem14(command=OpenPref,label=_"Settings",icon="gtk-preferences") MenuItem05(command=Quit,label=_"Quit",icon="gtk-quit")
+SMLibrary	= (label=_"Library") MenuItem00(command="RunPerlCode(::ChooseAddPath(0,1))",label=_"Add Music",icon="gtk-add") MenuItem32(command="RunPerlCode(::IdleScan)",label=_"Rescan Collection",icon="gtk-refresh")
+HBTime = Length(markup="$length",initsize="XX:XX",xalign=0) _TimeSlider(direct_mode=1) -PlayingTime(markup="%s",initsize="XX:XX",xalign=1)
+#HBbuttons2 =    
+    VolumeScroll	= VolumeIcon

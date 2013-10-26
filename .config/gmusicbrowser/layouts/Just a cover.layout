@@ -1,0 +1,10 @@
+[D_buttons_song_cover]
+Type= D
+Name= _"VastOne Just a Cover"
+Window =  transparent=1
+DefaultFontColor= white
+#HBTitle		= _Title LabelsIcons
+#HBArtist	= _Artist
+#HBAlbum		= _Album -Year
+#HBbuttons	= Prev Stop Play Next
+VBmain		= -Cover(forceratio=0,maxsize=295)

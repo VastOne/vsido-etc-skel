@@ -1,0 +1,35 @@
+[dv2]
+Type=G+
+
+#Menu bar
+MBmenu		= MainMenuItem LayoutItem PSortItem PFilterItem QueueItem
+HBmenu		= _MBmenu
+
+#Player buttons and TimeBar
+HBButtons	= Prev Stop Play Next ExtraButtons -VolumeIcon -Pref -OpenBrowser(toggle)
+HBTime		= Time _TimeSlider
+HBplaytime      = HBButtons 25_HBTime
+
+#Cover and Playlists
+HBplaylist      = Cover(group=1) _PlayList(songtree=1,group=1,grouping=album|artist_album_year)
+
+#Filter panes, SongList, Searchbar
+HPfp1		= FilterPane1(nb=2,hidebb=1,pages=album_artist,rules_hint=1,hidetabs=0) FilterPane2(nb=3,hidebb=1,pages=album,rules_hint=1,hidetabs=0)
+HPfp0	 	= FilterPane0(nb=1,hidebb=1,pages=genre,rules_hint=1,hidetabs=0) HPfp1
+HPfpmain        = HPfp0 _SongList
+HBsearch	= _SimpleSearch -FilterLock -PlayFilter -Refresh -ResetFilter
+VBbottom        = _HPfpmain HBsearch
+
+#Playlist and Filter pane panels
+VPmain          = HBplaylist VBbottom
+
+#All containers
+VBmain          = HBmenu HBplaytime _VPmain
+
+
+{Group artist_album_year}
+title= _"Artist - Album [Year]"
+head=title:h
+vcollapse=head
+title:	text( markup='<b><big>'.pesc($artist).' - '.pesc($album). \
+		if($year,' <small>['.pesc($year).']</small>'). 	'</big></b>')

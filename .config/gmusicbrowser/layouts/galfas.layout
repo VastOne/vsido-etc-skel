@@ -1,0 +1,58 @@
+[Galfas] 
+ 
+ Author        ="Ghald" 
+ Type=G+ 
+ DefaultFocus    = SimpleSearch 
+ Window        = hidden=Context|FilterPane3|SongTree,size=1120x820,gravity=east 
+ 
+ 
+ MBmenu        = MainMenuItem LayoutItem PSortItem PFilterItem QueueItem 
+ MBlist         = HistItem(icon=gmb-filter, tip="Filtres Récents",label=" ") LSortItem(icon=gtk-sort-ascending, tip="tri",label=" ") PlayItem(icon=gmb-wait, tip="en cours",label=" ") 
+ HBmenu        = _MBmenu 
+ HBButtons1    = Prev Stop Play Next ExtraButtons 5-VolumeIcon -Pref(size=menu) -OpenBrowser(toggle,size=menu) -ToggleButton5(icon=gtk-fullscreen,widget=VPselect,size=menu,resize=h) 
+ 
+ HBTime        = Time _TimeSlider 
+ HBTitle        = LockSong _Title -Stars LabelsIcons 
+ HBArtist    = LockArtist _Artist 
+ HBAlbum        = LockAlbum _Album -Year 
+ VBText        = HBButtons1 2HBTitle 2HBArtist 2HBAlbum HBTime 
+ HBText_Cover    = _VBText 5-Cover 
+ VBplayer    = HBButtons3 HBText_Cover 
+ 
+ VBRight        = 5VBplayer _TabbedLists(group=1) Total(mode=filter,size=x-small) 
+ 
+ VolumeScroll    = VBplayer 
+ 
+ VBMain        = HBmenu _HPMain Progress 
+ HPMain        = _VPselect VBRight 
+ 
+ 
+ ## Partie gauche, Genre&Artiste & album & SL &...## 
+ 
+ VPselect    = _HPselect 
+  HPselect    = VPLeft _VPcenter 
+  VPLeft    = _NBFilter1 
+    NBFilter1     = (tabpos="top") VPFilter10 VBFilter11 VBFilter12 
+ 
+    VPFilter10 = (tabtitle="Genre-Artiste") FilterPane0(nb=1,hidebb=1,hidetabs=1,page=genre,page_genre/mode=cloud,page_genre/cloud_max=15,page_genre/cloud_min=7) _VPa 
+      VPa    = FilterPane1(nb=2,hidebb=0,hidetabs=0,pages=artists|album_artist|composer, page_artists/lmarkup=1,page_artists/mode=cloud,page_artists/cloud-max=16,page_artists/cloud_min=9, page_album_artist/lmarkup=1, page_album_artist/mode=cloud, page_album_artist/cloud_max=16,page_album_artist/cloud_min=9, page_composer/mode=cloud, page_composer/cloud_max=16, page_composer/cloud_min=9) 
+        VBFilter11 = (tabtitle="Dossier") _FilterPane4(nb=1,page=folder,hidebb=1) 
+    VBFilter12 = (tabtitle="Filtre") _FilterPane5(nb=1,page=savedtree,hidetabs=1,hidebb=1) 
+ 
+ 
+ ### Menu de selection du milieu, dans la partie gauche (album & Filtres & SongList/Tree) ### 
+ 
+  VPcenter    = HBct _VBcb 
+   HBct        = _HPct 
+       HPct    = _FilterPane2(nb=3,hidebb= 0,hidetabs= 1,min= 3,page= album,page_album/lmarkup= 1,page_album/mmarkup= below,page_album/mode=mosaic,page_album/sort=artist,page_album/mpicsize=128,pages=album) 
+   VBcb        = HBbouton _HPcb 
+    HPcb    = _FilterPane3(nb=4,page=filter,pages=savedtree|lastplay|added) _HPslt 
+       HPslt    = SongList(activate=addplay,\ 
+             cols="albumpic track title rating artist length album playcount skipcount year genre file right_aligned_folder added",\ 
+            colwidth="added 136 album 200 albumpic 42 artist 200 file 301 genre 260 lastplay 100 length 41 path 413 playandqueueandtrack 24 playcount 37 rating 37 right_aligned_folder 338 skipcount 26 title 270 track 25 year 55")\ 
+         _SongTree(activate=addplay,\ 
+            cols="playandqueueandtrack title rating length playcount genre year compilation file right_aligned_folder  added",\ 
+            colwidth="artist 124 file 375 lastplay 107 length 49 playandqueue 19 playandqueueandtrack 20 playcount 22 rating 21 ratingpic 100 right_aligned_folder 402 title 327 titleaa 397 track 21",\ 
+            sort: "album_artist:i album disc track") 
+ 
+    HBbouton    = ToggleButton1(icon=gtk-add, widget=FilterPane3,tip="Afficher Filtres") ToggleButton2(icon=gmb-view-list, widget=SongList, togglegroup=1) ToggleButton3(icon=gmb-view-tree, widget=SongTree,togglegroup=1) ToggleButton4(icon=gmb-album,widget=HBct) SimpleSearch(maxwidth=250) FilterLock PlayFilter -MBlist 

@@ -1,0 +1,2 @@
+2013-10-17 03:35:52 ERROR addons.xpi-utils: Unable to read anything useful from the database at resource://gre/modules/XPIProvider.jsm -> resource://gre/modules/XPIProviderUtils.js:921
+2013-10-17 03:35:58 ERROR addons.xpi: Attempted to load bootstrap scope from missing directory /home/vastone/.mozilla/firefox/0bwoq7rk.default/extensions/{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}.xpi at resource://gre/modules/XPIProvider.jsm:3907

@@ -1,0 +1,19 @@
+[VastOne full with buttons]
+Type=T
+Author=VastOne
+Category = gmb-art
+
+Window= borderwidth=2
+ HBTime		= Length(markup="$length",initsize="XX:XX",xalign=0) _TimeSlider(direct_mode=1) -PlayingTime(markup="%s",initsize="XX:XX",xalign=1)
+HBButtons	= 7Prev(size=small-toolbar) 45Filler2 Play(size=small-toolbar) -Next(size=small-toolbar)
+HBIndic		= -Stars 14Quit(size=menu)
+HBTitle		= LockSong _Title LabelsIcons
+HBArtist	= LockArtist _Artist -HBSettings
+HBSettings	= ExtraButtons(size=menu) BMSettings
+ BMSettings	= (icon=gtk-preferences,size=menu) MainMenuItem PSortItem SMLibrary LayoutItem QueueItem PFilterItem SeparatorMenuItem01 MenuItem14(command=OpenPref,label=_"Settings",icon="gtk-preferences") MenuItem05(command=Quit,label=_"Quit",icon="gtk-quit")
+SMLibrary	= (label=_"Library") MenuItem00(command="RunPerlCode(::ChooseAddPath(0,1))",label=_"Add Music",icon="gtk-add") MenuItem32(command="RunPerlCode(::IdleScan)",label=_"Rescan Collection",icon="gtk-refresh")
+HBAlbum		= LockAlbum _Album -VolumeIcon
+VBText		= HBTitle HBArtist HBAlbum
+VBmain		= HBIndic _VBText -HBTime HBButtons
+HBmain		= _VBmain Filler1 -Cover(forceratio=1)
+

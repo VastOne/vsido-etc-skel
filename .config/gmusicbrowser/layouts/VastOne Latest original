@@ -1,0 +1,38 @@
+[D_VastOne_9]
+Type = D
+Name = _"VastOne Latest"
+
+Category = gmb-art
+
+SkinPath = gmb-art_skins/arkanoid_skin
+
+Window =  transparent=1
+
+#DefaultFontColor= white
+
+VBmain = \
+    HBTitle \
+    HBArtist \
+    HBAlbum \
+    -HBStarsAndButtons \
+    -HBTime \
+    -Cover(forceratio=1,maxsize=280)
+
+    HBStarsAndButtons =  HBButtons -HBSettings -VolumeIcon
+ HBSettings	= ExtraButtons(size=menu) BMSettings
+ BMSettings	= (icon=gtk-preferences,size=menu) MainMenuItem PSortItem SMLibrary LayoutItem QueueItem PFilterItem SeparatorMenuItem01 MenuItem14(command=OpenPref,label=_"Settings",icon="gtk-preferences") MenuItem05(command=Quit,label=_"Quit",icon="gtk-quit")
+SMLibrary	= (label=_"Library") MenuItem00(command="RunPerlCode(::ChooseAddPath(0,1))",label=_"Add Music",icon="gtk-add") MenuItem32(command="RunPerlCode(::IdleScan)",label=_"Rescan Collection",icon="gtk-refresh")
+
+    HBTitle = _Title LabelsIcons
+
+    HBArtist = _Artist
+
+    HBAlbum= _Album
+    HBTime = Length(markup="$length",initsize="XX:XX",xalign=0) _TimeSlider(direct_mode=0) -PlayingTime(markup="%s",initsize="XX:XX",xalign=1)
+    HBButtons = 0Filler1 \
+        Prev(size=small-toolbar) \
+        Play(size=small-toolbar) \
+        Next(size=small-toolbar) \
+        _Filler2
+    VolumeScroll	= VolumeIcon
+
